@@ -1,4 +1,5 @@
 {
-    "html.validate.scripts": true,
-    "html.validate.styles": true
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "cSpell.words": ["Bento", "Glassmorphism"]
 }
