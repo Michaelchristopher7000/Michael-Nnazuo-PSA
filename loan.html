@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons (swap icons easily) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS link -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Loans</title>
+  <!-- favicon -->
+  <link rel="icon" href="images/favicon.ico" sizes="50x50" type="image/x-icon">
+  <!-- custom css link -->
+  <link rel="stylesheet" href="./script.css">
+
+  <style>
+    :root {
+      --primary: #6a0dad;
+      --primary-dark: #4b0082;
+      --accent: #00d4ff;
+      /* Modern cyan accent */
+      --surface: #ffffff;
+      --bg-gradient: linear-gradient(135deg, #fdfbfd 0%, #f4eff9 100%);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: #2d3748;
+      overflow-x: hidden;
+    }
+
+    /* --- UI Components --- */
+
+    /* Glassmorphism Navbar */
+    .navbar-glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(90deg, var(--primary) 0%, #a239ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Modern Buttons */
+    .btn-primary-glow {
+      background: var(--primary);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary-glow:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
+      color: white;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(106, 13, 173, 0.08);
+      border-color: rgba(106, 13, 173, 0.1);
+    }
+
+    /* --- The 3D Hero Element --- */
+    .hero-visual {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card-3d {
+      width: 320px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      position: absolute;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .purple-card-3d {
+      width: 320px;
+      height: 200px;
+      background: linear-gradient(135deg, #6a0dad, #9d4edd);
+      border-radius: 24px;
+      position: absolute;
+      transform: rotate(-10deg) translate(-30px, -30px);
+      z-index: 1;
+      box-shadow: 0 20px 40px rgba(106, 13, 173, 0.3);
+    }
+
+    /* Floating Circle Decoration */
+    .circle-deco {
+      width: 150px;
+      height: 150px;
+      background: var(--accent);
+      filter: blur(80px);
+      opacity: 0.4;
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* --- Calculator Breakdown Chart --- */
+    .donut-chart {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) 0% 85%, #e2e8f0 85% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .donut-hole {
+      width: 90px;
+      height: 90px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Range Slider Styling */
+    input[type=range] {
+      accent-color: var(--primary);
+      height: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white bg-opacity-75 border-bottom py-3"
+        style="backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div class="container">
+            <!-- logo anchor -->
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+                <img src="/images/SendNaw_logo_main-removebg-preview.png" alt="SendNaw" height="45">
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sendnawNav">
+                <span class="navbar-toggler-icon"></span>
+                <span class="visually-hidden">toggle icon</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="sendnawNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+
+                    <li class="nav-item dropdown position-static mx-lg-3">
+                        <a class="nav-link dropdown-toggle fw-semibold text-dark px-0" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            Features
+                        </a>
+                        <div class="dropdown-menu shadow-lg border-0 rounded-4 mt-2 p-4"
+                            style="width: 100%; max-width: 600px; left: 50%; transform: translateX(-50%);">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-primary mb-3"
+                                        style="letter-spacing: 1px;">Payments</h6>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/instant-transfers.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"><i
+                                                class="bi bi-send-fill"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Instant Transfers</div>
+                                            <small class="text-muted">Move money in seconds</small>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/phone-number-pay.html">
+                                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success"><i
+                                                class="bi bi-phone-vibrate"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Phone Number Pay</div>
+                                            <small class="text-muted">No account number needed</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-warning mb-3"
+                                        style="letter-spacing: 1px;">Lifestyle</h6>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/bills-airtime.html">
+                                        <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning"><i
+                                                class="bi bi-lightning-charge-fill"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Bills & Airtime</div>
+                                            <small class="text-muted">Utility payments made easy</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
+                                            style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
+                                            <i class="bi bi-credit-card-2-front-fill"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Virtual Cards</div>
+                                            <small class="text-muted">Shop globally with your cards</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-danger mb-3"
+                                        style="letter-spacing: 1px;">Global Commerce</h6>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html#usd-cards">
+                                        <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger">
+                                            <i class="bi bi-globe2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">USD Virtual Cards</div>
+                                            <small class="text-muted">Pay for Netflix, Amazon & Ads</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/multi-currency-wallets.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
+                                            style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Multi-Currency Wallets</div>
+                                            <small class="text-muted">Hold Naira, Dollars, and Pounds</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/sendnawpay.html">
+                                        <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info">
+                                            <i class="bi bi-cart-check-fill"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">SendNaw Pay</div>
+                                            <small class="text-muted">One-click checkout for merchants</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Loan Feature Div -->
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-success mb-3"
+                                        style="letter-spacing: 1px;">Credit & Growth</h6>
+
+                                    <!-- Loan Link Item -->
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3"
+                                        href="./loan.html">
+                                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
+
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Instant Loans</div>
+
+                                            <small class="text-muted">Flexible credit with low interest</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown mx-lg-3">
+                        <a class="nav-link dropdown-toggle fw-semibold text-dark px-0" href="#" role="button"
+                            data-bs-toggle="dropdown"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            Company
+                        </a>
+                        <div class="dropdown-menu shadow-lg border-0 rounded-4 p-2 mt-2" style="min-width: 200px;">
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./about.html">About Us</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./Career.html">Careers</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./contact.html">Contact</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./loan.html#calculator">Loan calculator</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item mx-lg-3">
+                        <a class="nav-link fw-semibold text-dark px-0" href="./faq.html"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            FAQ
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="./signin.html" class="nav-link fw-bold px-0 text-dark text-decoration-none"
+                        style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                        onmouseover="this.style.borderBottomColor='#6f42c1'"
+                        onmouseout="this.style.borderBottomColor='transparent'">
+                        Sign in
+                    </a>
+                    <a href="./signup.html" class="btn px-4 py-2 rounded-pill fw-bold shadow-sm border-0"
+                        style="background-color: #6f42c1; color: #fff;">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+  <!-- navbar ends here -->
+
+
+
+  <section class="pt-5 pb-5 mt-5 d-flex align-items-center" style="min-height: 90vh;">
+    <div class="container pt-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
+          <div class="d-inline-block px-3 py-1 rounded-pill bg-white border mb-3 shadow-sm">
+            <small class="fw-bold text-primary">🚀 The #1 Digital Lender Concept</small>
+          </div>
+          <h1 class="display-3 fw-800 mb-3 lh-1">
+            Money when it <br>
+            <span class="text-gradient">matters most.</span>
+          </h1>
+          <p class="lead text-muted mb-5" style="max-width: 90%;">
+            Instant credit sent directly to your bank account.
+            No paperwork, no collateral, no awkward conversations.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#calculator" class="btn btn-primary-glow btn-lg rounded-pill px-5">Get Started</a>
+            <button class="btn btn-outline-dark btn-lg rounded-pill px-4 border-2">
+              <i class="bi bi-google-play me-2"></i>Download App
+            </button>
+          </div>
+          <div class="mt-4 pt-3 d-flex align-items-center gap-3">
+            <div class="d-flex">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                class="rounded-circle border border-white border-2" width="40" alt="">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                class="rounded-circle border border-white border-2 ms-n2" width="40" style="margin-left: -15px;" alt="">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg"
+                class="rounded-circle border border-white border-2 ms-n2" width="40" style="margin-left: -15px;" alt="">
+            </div>
+            <p class="mb-0 small text-muted">Trusted by <strong>50,000+</strong> Nigerians</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 position-relative" data-aos="fade-left" data-aos-duration="1200">
+          <div class="hero-visual">
+            <div class="circle-deco" style="top: 20%; right: 20%;"></div>
+
+            <div class="purple-card-3d p-4 text-white">
+              <div class="d-flex justify-content-between opacity-50">
+                <i class="bi bi-wifi fs-4"></i>
+                <span>Credit</span>
+              </div>
+            </div>
+
+            <div class="glass-card-3d p-4 d-flex flex-column justify-content-between">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-bold fs-5 text-primary">SendNaw</span>
+                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+              </div>
+              <div>
+                <small class="text-muted d-block">Available Balance</small>
+                <h2 class="fw-bold mb-0">₦500,000.00</h2>
+              </div>
+              <div class="d-flex gap-2 mt-2">
+                <span class="badge bg-dark rounded-pill">Active</span>
+                <span class="badge bg-light text-dark border rounded-pill">Collateral-Free</span>
+              </div>
+            </div>
+
+            <div class="position-absolute bg-white px-3 py-2 rounded-3 shadow-lg d-flex align-items-center gap-2"
+              style="bottom: 50px; left: 0px; animation: float 5s infinite ease-in-out 1s;">
+              <div class="bg-success bg-opacity-10 p-1 rounded-circle text-success">
+                <i class="bi bi-lightning-fill"></i>
+              </div>
+              <div>
+                <span class="d-block fw-bold small">Disbursed</span>
+                <small class="text-muted" style="font-size: 10px;">Just now</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="py-4 border-top border-bottom bg-white">
+    <div class="container">
+      <p class="text-center text-muted small text-uppercase fw-bold mb-3 ls-2">Secured & Powered By</p>
+      <div class="row text-center opacity-50 grayscale-wrapper justify-content-center align-items-center g-4">
+        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-shield-lock me-1"></i> PAYSTACK</div>
+        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-bank me-1"></i> INTERSWITCH</div>
+        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-credit-card me-1"></i> MASTERCARD</div>
+        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-safe me-1"></i> NDIC</div>
+      </div>
+    </div>
+  </div>
+
+
+  <section id="calculator" class="py-5 bg-white">
+    <div class="container py-5">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5" data-aos="fade-up">
+          <h2 class="fw-bold mb-3">Transparent Rates. <br>No Hidden Fees.</h2>
+          <p class="text-muted mb-4">Use our calculator to see exactly what you repay. We charge a flat interest rate
+            based on your duration.</p>
+
+          <ul class="list-unstyled mb-4">
+            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Early
+              repayment discount</li>
+            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i>
+              Increases your credit score</li>
+            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Instant
+              disbursement</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-light" data-aos="zoom-in">
+            <div class="card-body p-4 p-md-5">
+
+              <div class="row">
+                <div class="col-md-7 mb-4 mb-md-0">
+                  <label class="fw-bold mb-3 d-flex justify-content-between">
+                    <span>Amount</span>
+                    <span class="text-primary" id="amountVal">₦50,000</span>
+                  </label>
+                  <input type="range" class="form-range mb-4" id="loanRange" min="10000" max="500000" step="5000"
+                    value="50000">
+
+                  <label class="fw-bold mb-2">Duration</label>
+                  <div class="d-flex gap-2 mb-4">
+                    <button class="btn btn-outline-primary active flex-fill duration-btn" data-days="15">15
+                      Days</button>
+                    <button class="btn btn-outline-primary flex-fill duration-btn" data-days="30">30 Days</button>
+                  </div>
+
+                  <div class="p-3 bg-white rounded-3 border">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Interest Rate</span>
+                      <span class="fw-bold small" id="rateVal">12%</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span class="text-muted small">Total Repayment</span>
+                      <span class="fw-bold text-primary" id="totalVal">₦56,000</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-5 border-start-md d-flex flex-column align-items-center justify-content-center">
+                  <div class="donut-chart mb-3" id="visualChart">
+                    <div class="donut-hole">
+                      <small class="text-muted" style="font-size: 10px">REPAY</small>
+                      <span class="fw-bold small" id="chartTotal">₦56k</span>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center gap-3 small">
+                    <div class="d-flex align-items-center gap-1">
+                      <div style="width:10px; height:10px; background:var(--primary); border-radius:50%;"></div> Loan
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                      <div style="width:10px; height:10px; background:#e2e8f0; border-radius:50%;"></div> Interest
+                    </div>
+                  </div>
+
+                  <button class="btn btn-primary-glow w-100 mt-4 rounded-pill"
+                    onclick="alert('Proceeding to KYC Application...')">Apply Now</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container py-5">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold display-6">Why SendNaw?</h2>
+        <p class="text-muted">Built for the modern Nigerian economy.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card p-4 h-100">
+            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
+              <i class="bi bi-robot fs-4"></i>
+            </div>
+            <h4>AI Powered</h4>
+            <p class="text-muted">Our credit algorithm analyzes your financial health in seconds, not days.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card p-4 h-100">
+            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
+              <i class="bi bi-shield-check fs-4"></i>
+            </div>
+            <h4>Bank Grade Security</h4>
+            <p class="text-muted">Your BVN and data are encrypted with 256-bit SSL technology. NDPR Compliant.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card p-4 h-100">
+            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
+              <i class="bi bi-graph-up-arrow fs-4"></i>
+            </div>
+            <h4>Grow Limit</h4>
+            <p class="text-muted">Repay on time and watch your loan limit increase up to ₦1,000,000.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 position-relative"
+    style="background-color: #f8fafc; color: #0f172a; font-family: 'Inter', -apple-system, sans-serif; overflow: hidden;">
+    <div class="container py-lg-5">
+
+      <div class="row align-items-center gy-5">
+
+        <div class="col-lg-6 text-center text-lg-start">
+          <span class="badge rounded-pill px-3 py-2 mb-3"
+            style="background: rgba(79, 70, 229, 0.1); color: #9d4edd; font-weight: 600; font-size: 0.85rem; border: none;">
+            Now available in Nigeria
+          </span>
+          <h2 class="display-4 fw-bold mb-3" style="letter-spacing: -0.02em; line-height: 1.2;">
+            Your loan, <br>
+            <span style="color: #9d4edd;">managed in one app.</span>
+          </h2>
+          <p class="lead mb-4" style="color: #475569; max-width: 500px; font-size: 1.15rem;">
+            Experience a simpler way to borrow. Apply in minutes, get instant approval, and manage repayments with
+            SendNaw.
+          </p>
+
+          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+            <button class="btn d-flex align-items-center gap-2 px-4 py-2"
+              style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+              <i class="bi bi-apple fs-2" style="color: #0f172a;"></i>
+              <div class="text-start lh-1">
+                <small
+                  style="font-size: 10px; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em;">Download
+                  on</small><br>
+                <span style="font-weight: 700; color: #0f172a;">App Store</span>
+              </div>
+            </button>
+
+            <button class="btn d-flex align-items-center gap-2 px-4 py-2"
+              style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+              <i class="bi bi-google-play fs-2" style="color: #0f172a;"></i>
+              <div class="text-start lh-1">
+                <small style="font-size: 10px; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em;">Get
+                  it on</small><br>
+                <span style="font-weight: 700; color: #0f172a;">Google Play</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-lg-6 text-center">
+          <div class="position-relative d-inline-block">
+            <div class="position-absolute top-50 start-50 translate-middle w-75 h-75 rounded-circle"
+              style="background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, rgba(248,250,252,0) 70%); z-index: 0;">
+            </div>
+
+            <img src="/images/loan.png" alt="SendNaw App Interface" class="img-fluid position-relative"
+              style="max-width:380px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08)); z-index: 1;">
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-5 pt-lg-5">
+        <div class="col-lg-8">
+          <div class="text-center mb-5">
+            <h3 style="font-weight: 800; color: #0f172a;">Questions? We have answers.</h3>
+            <p style="color: #64748b;">Everything you need to know about SendNaw loans.</p>
+          </div>
+
+          <div class="accordion" id="faqAccordion" style="--bs-accordion-border-color: transparent;">
+
+            <div class="accordion-item mb-3"
+              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1"
+                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
+                  How quickly can I get my loan?
+                </button>
+              </h2>
+              <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
+                  Once your application is approved—which typically takes under 5 minutes—the funds are available for
+                  instant withdrawal to your linked bank account.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3"
+              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2"
+                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
+                  What is the interest rate?
+                </button>
+              </h2>
+              <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
+                  Our rates are calculated based on your credit profile. You will always see the total repayment amount
+                  and interest rate clearly before you commit.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3"
+              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3"
+                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
+                  Is my personal data secure?
+                </button>
+              </h2>
+              <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
+                  We use bank-level 256-bit encryption to protect your data. We never share your personal information
+                  with third parties without your explicit consent.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- footer -->
+  <footer class="pt-5 pb-4 bg-dark">
+    <div class="container text-white">
+      <div class="row g-5 mb-5">
+        <div class="col-lg-4">
+          <!-- logo anchor -->
+          <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+            <img src="/images/SendNaw_logo_main-removebg-preview.png" alt="SendNaw" height="45">
+          </a>
+          <p class="small pe-lg-5 text-white-50 pt-5">
+            SendNaw is a modern financial platform providing seamless banking, payments, and lifestyle
+            services for the digital age.
+          </p>
+          <div class="d-flex gap-3 mt-4">
+            <a href="#" class="text-white opacity-50 text-decoration-none"><i class="bi bi-twitter-x fs-4"></i></a>
+            <a href="https://www.instagram.com/joinsendnaw?igsh=MW5tb2Y4Mjd3ZnlhbA=="
+              class="text-white opacity-50 text-decoration-none"><i class="bi bi-instagram fs-4"></i></a>
+            <a href="#" class="text-white opacity-50 text-decoration-none"><i class="bi bi-facebook fs-4"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Products</h6>
+          <ul class="list-unstyled d-grid gap-3">
+            <li><a href="#" class="text-white-50 small text-decoration-none link-light">Personal Account</a>
+            </li>
+            <li><a href="./virtual-card-page.html" class="text-white-50 small text-decoration-none link-light">SendNaw
+                Cards</a>
+            </li>
+            <li><a href="#" class="text-white-50 small text-decoration-none link-light">Bill Payments</a>
+            </li>
+            <li><a href="./savings-page.html" class="text-white-50 small text-decoration-none link-light">Savings</a>
+            </li>
+            <li><a href="./loan.html" class="text-white-50 small text-decoration-none link-light">Loan</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Company</h6>
+          <ul class="list-unstyled d-grid gap-3">
+            <li><a href="./about.html" class="text-white-50 small text-decoration-none link-light">About
+                Us</a></li>
+            <li><a href="./Career.html" class="text-white-50 small text-decoration-none link-light">Careers</a></li>
+            <li><a href="./contact.html.html" class="text-white-50 small text-decoration-none link-light">Contact
+                Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Regulatory Information
+          </h6>
+          <p class="text-white-50 small mb-4 lh-lg">
+            SendNaw is a financial technology company, not a bank. Banking services are provided by our
+            licensed partner banks. All deposits are insured by the NDIC.
+          </p>
+          <div class="p-3 rounded-3 bg-white bg-opacity-10">
+            <p class="small text-white mb-0 fw-bold">Verified Provider</p>
+            <p class="text-white-50 mb-0" style="font-size: 11px;">CBN Licensed | NDIC Insured</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary opacity-25 my-4">
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="text-white-50 small mb-0">&copy; 2025 SendNaw Technologies Limited. RC: 1234567</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="./privacy-policy.html" class="text-white-50 small text-decoration-none link-light">Privacy.</a>
+            <a href="./terms-condition.html" class="text-white-50 small text-decoration-none link-light">Terms and
+              Conditions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS JS LINK -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      delay: 900
+    });
+    // Calculator Logic
+    const range = document.getElementById('loanRange');
+    const amountVal = document.getElementById('amountVal');
+    const totalVal = document.getElementById('totalVal');
+    const chartTotal = document.getElementById('chartTotal');
+    const rateVal = document.getElementById('rateVal');
+    const visualChart = document.getElementById('visualChart');
+    const durationBtns = document.querySelectorAll('.duration-btn');
+
+    let currentDuration = 15;
+    let interestRate = 0.12; // 12%
+
+    function formatMoney(num) {
+      return '₦' + num.toLocaleString();
+    }
+
+    function updateCalc() {
+      const principal = parseInt(range.value);
+
+      // Logic: Rate changes based on duration
+      if (currentDuration === 15) interestRate = 0.07; // 7%
+      if (currentDuration === 30) interestRate = 0.15; // 15%
+
+      const interest = principal * interestRate;
+      const total = principal + interest;
+
+      // Update Text
+      amountVal.innerText = formatMoney(principal);
+      totalVal.innerText = formatMoney(total);
+      chartTotal.innerText = (total / 1000).toFixed(0) + 'k';
+      rateVal.innerText = (interestRate * 100).toFixed(0) + '%';
+
+      // Update Chart (CSS Conic Gradient)
+      // Calculate percentage of principal vs total for visual
+      const pPercent = (principal / total) * 100;
+      visualChart.style.background = `conic-gradient(#6a0dad 0% ${pPercent}%, #e2e8f0 ${pPercent}% 100%)`;
+    }
+
+    // Event Listeners
+    range.addEventListener('input', updateCalc);
+
+    durationBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Toggle Active Class
+        durationBtns.forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+
+        // Update Logic
+        currentDuration = parseInt(e.target.dataset.days);
+        updateCalc();
+      });
+    });
+
+    // Init
+    updateCalc();
+    const slider = document.getElementById('loanSlider');
+    const amountDisplay = document.getElementById('amountDisplay');
+    const repaymentDisplay = document.getElementById('repaymentDisplay');
+    const interestDisplay = document.getElementById('interestDisplay');
+    const durationRadios = document.getElementsByName('duration');
+
+    const formatter = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      maximumFractionDigits: 0
+    });
+
+    const calculateLoan = () => {
+      const principal = parseInt(slider.value);
+
+      // Get selected duration
+      let duration = 30;
+      for (const radio of durationRadios) {
+        if (radio.checked) {
+          duration = parseInt(radio.value);
+          break;
+        }
+      }
+
+      // Dynamic Interest Logic (Conceptual)
+      // 15 days = 7%, 30 days = 15%, 60 days = 25%
+      let rate = 0.15;
+      if (duration === 15) rate = 0.07;
+      if (duration === 60) rate = 0.25;
+
+      const totalRepayment = principal + (principal * rate);
+
+      // Update DOM
+      amountDisplay.innerText = formatter.format(principal).replace('NGN', '₦');
+      repaymentDisplay.innerText = formatter.format(totalRepayment).replace('NGN', '₦');
+      interestDisplay.innerText = (rate * 100) + "%";
+    };
+
+    // Event Listeners
+    slider.addEventListener('input', calculateLoan);
+    durationRadios.forEach(radio => {
+      radio.addEventListener('change', calculateLoan);
+    });
+
+    // Initial Call
+    calculateLoan();
+  </script>
+
+  <script src="./script.js"></script>
+  <!-- Bootstrap js link -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

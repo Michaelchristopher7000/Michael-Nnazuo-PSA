@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       botBubble.className = "d-flex mb-2";
       botBubble.innerHTML = `
         <div class="bg-light p-2 rounded-3 small">
-          Thanks for contacting Revanlab 💜  
+          Thanks for contacting Sendnaw  
           Our team will respond shortly.
         </div>
       `;

@@ -34,7 +34,32 @@
      padding-top: 90px;
  }
 
+ /* navbar */
+ @media (max-width: 991px) {
 
+     /* lg breakpoint */
+     .dropdown-menu .row {
+         flex-direction: column;
+         gap: 1rem;
+     }
+
+     .dropdown-menu .col-md-6 {
+         max-width: 100%;
+     }
+
+     .dropdown-menu {
+         width: 100% !important;
+         left: 0 !important;
+         transform: none !important;
+     }
+ }
+
+ .dropdown-menu {
+  max-height: 70vh; /* dropdown max height = 70% of screen */
+  overflow-y: auto; /* scroll if content exceeds max-height */
+}
+
+/* navbar ends here */
 
  .btn-indigo {
      background-color: var(--revan-indigo);

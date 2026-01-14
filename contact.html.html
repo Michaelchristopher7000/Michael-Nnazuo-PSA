@@ -17,6 +17,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!--styling  -->
     <link rel="stylesheet" href="./script.css">
+    <!-- favicon -->
+    <link rel="icon" href="images/favicon.ico" sizes="50x50" type="image/x-icon">
+    <!-- title -->
     <title>Contact Us</title>
     <style>
         /* body styling */
@@ -24,11 +27,145 @@
             font-family: 'Poppins', sans-serif;
             padding-top: 90px;
         }
+
+        :root {
+            --brand-primary: #6a0dad;
+            --brand-secondary: #00d4ff;
+            --bg-glass: rgba(255, 255, 255, 0.8);
+            --text-main: #1a1a1a;
+            --text-sub: #64748b;
+        }
+
+        body {
+            background-color: #fcfaff;
+            /* Subtle off-white purple tint */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .premium-section {
+            padding: 100px 0;
+            background: radial-gradient(circle at top right, rgba(106, 13, 173, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.05), transparent);
+        }
+
+        .heading-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+        }
+
+        /* The Bento Grid Style Cards */
+        .bento-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(106, 13, 173, 0.08);
+            border-color: var(--brand-primary);
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--brand-primary), #8e2de2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(106, 13, 173, 0.2);
+        }
+
+        /* Perfect Form Inputs */
+        .input-field {
+            background: #f1f5f9;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            padding: 16px 20px;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            background: #ffffff;
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.1);
+        }
+
+        /* The Perfect Button */
+        .btn-perfect {
+            background: var(--text-main);
+            /* Deep black for luxury feel */
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-perfect:hover {
+            background: var(--brand-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(106, 13, 173, 0.2);
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: rgba(106, 13, 173, 0.08);
+            color: var(--brand-primary);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-sub);
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+
+        .social-link:hover {
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+
+      <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top bg-white bg-opacity-75 border-bottom py-3"
         style="backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
         <div class="container">
@@ -52,7 +189,7 @@
                             style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
                             onmouseover="this.style.borderBottomColor='#6f42c1'"
                             onmouseout="this.style.borderBottomColor='transparent'">
-                            Products
+                            Features
                         </a>
                         <div class="dropdown-menu shadow-lg border-0 rounded-4 mt-2 p-4"
                             style="width: 100%; max-width: 600px; left: 50%; transform: translateX(-50%);">
@@ -60,7 +197,7 @@
                                 <div class="col-md-6">
                                     <h6 class="text-uppercase small fw-bold text-primary mb-3"
                                         style="letter-spacing: 1px;">Payments</h6>
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/instant-transfers.html">
                                         <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"><i
                                                 class="bi bi-send-fill"></i></div>
                                         <div>
@@ -68,7 +205,7 @@
                                             <small class="text-muted">Move money in seconds</small>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/phone-number-pay.html">
                                         <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success"><i
                                                 class="bi bi-phone-vibrate"></i></div>
                                         <div>
@@ -80,7 +217,7 @@
                                 <div class="col-md-6">
                                     <h6 class="text-uppercase small fw-bold text-warning mb-3"
                                         style="letter-spacing: 1px;">Lifestyle</h6>
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/bills-airtime.html">
                                         <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning"><i
                                                 class="bi bi-lightning-charge-fill"></i></div>
                                         <div>
@@ -89,14 +226,14 @@
                                         </div>
                                     </a>
 
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html">
                                         <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
                                             style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
                                             <i class="bi bi-credit-card-2-front-fill"></i>
                                         </div>
                                         <div>
                                             <div class="fw-bold text-dark">Virtual Cards</div>
-                                            <small class="text-muted">Shop globally with USD cards</small>
+                                            <small class="text-muted">Shop globally with your cards</small>
                                         </div>
                                     </a>
                                 </div>
@@ -104,7 +241,7 @@
                                     <h6 class="text-uppercase small fw-bold text-danger mb-3"
                                         style="letter-spacing: 1px;">Global Commerce</h6>
 
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html#usd-cards">
                                         <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger">
                                             <i class="bi bi-globe2"></i>
                                         </div>
@@ -114,7 +251,7 @@
                                         </div>
                                     </a>
 
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/multi-currency-wallets.html">
                                         <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
                                             style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
                                             <i class="bi bi-cash-stack"></i>
@@ -125,13 +262,33 @@
                                         </div>
                                     </a>
 
-                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="#">
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/sendnawpay.html">
                                         <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info">
                                             <i class="bi bi-cart-check-fill"></i>
                                         </div>
                                         <div>
                                             <div class="fw-bold text-dark">SendNaw Pay</div>
                                             <small class="text-muted">One-click checkout for merchants</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Loan Feature Div -->
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-success mb-3"
+                                        style="letter-spacing: 1px;">Credit & Growth</h6>
+
+                                    <!-- Loan Link Item -->
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3"
+                                        href="./loan.html">
+                                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
+
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Instant Loans</div>
+
+                                            <small class="text-muted">Flexible credit with low interest</small>
                                         </div>
                                     </a>
                                 </div>
@@ -151,7 +308,8 @@
                         <div class="dropdown-menu shadow-lg border-0 rounded-4 p-2 mt-2" style="min-width: 200px;">
                             <a class="dropdown-item py-2 rounded-2 fw-medium" href="./about.html">About Us</a>
                             <a class="dropdown-item py-2 rounded-2 fw-medium" href="./Career.html">Careers</a>
-                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./contact.html.html">Contact</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./contact.html">Contact</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./loan.html#calculator">Loan calculator</a>
                         </div>
                     </li>
 
@@ -180,81 +338,151 @@
             </div>
         </div>
     </nav>
+    <!-- navbar ends here -->
 
 
-    <!-- Contact Us Page -->
-    <section class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="row g-4">
-                <!-- In-App Support -->
-                <div class="col-lg-4">
-                    <div class="card h-100 min-vh-50 border-0 rounded-4 shadow-sm text-center p-5"
-                        style="background-color: #8c61db;">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-white mx-auto mb-4"
-                            style="width: 80px; height: 80px;">
-                            <i class="bi bi-chat-square-text fs-2 text-success"></i>
+    <!-- contact section -->
+
+
+    <section class="premium-section">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-lg-5">
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-shield-check me-2"></i> Trusted by 50,000+ Businesses
+                    </div>
+                    <h1 class="heading-title display-4 mb-4">Let’s start a <span
+                            style="color: var(--brand-primary);">conversation.</span></h1>
+                    <p class="text-sub mb-5 fs-5">Have a complex integration or a simple question? Our fintech experts
+                        are standing by.</p>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="bento-card">
+                                <div class="icon-wrapper">
+                                    <i class="bi bi-envelope-arrow-up-fill"></i>
+                                </div>
+                                <h5 class="fw-bold mb-1">Email us</h5>
+                                <p class="text-sub small mb-0">support@sendnaw.com</p>
+                            </div>
                         </div>
-                        <h3 class="fw-bold mb-3 text-light">In-App Customer Service</h3>
-                        <p class="lh-base text-light">24/7 self-service like transfer disputes or card disputes with
-                            real-time updates and chat with a live Customer Service Agent.</p>
+                        <div class="col-md-6">
+                            <div class="bento-card">
+                                <div class="icon-wrapper">
+                                    <i class="bi bi-telephone-inbound"></i>
+                                </div>
+                                <h5 class="fw-bold mb-1">Call Support</h5>
+                                <p class="text-sub small mb-0">+234 XXX XXX XXXX</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bento-card">
+                                <div class="icon-wrapper">
+                                    <i class="bi bi-clock-fill"></i>
+                                </div>
+                                <h5 class="fw-bold mb-1">24/7 Chat</h5>
+                                <p class="text-sub small mb-0">In-app support</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="mt-5">
+                        <p class="text-sub small fw-bold text-uppercase mb-3">Follow our updates</p>
+                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    </div> -->
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="bento-card p-lg-5 shadow-lg">
+                        <h3 class="fw-bold mb-4">Send a secure message</h3>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="small fw-bold text-sub mb-2">FULL NAME</label>
+                                    <input type="text" class="input-field" placeholder="e.g. Alex Rivera">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small fw-bold text-sub mb-2">EMAIL ADDRESS</label>
+                                    <input type="email" class="input-field" placeholder="alex@company.com">
+                                </div>
+                            </div>
+
+                            <label class="small fw-bold text-sub mb-2">HOW CAN WE HELP?</label>
+                            <select class="input-field">
+                                <option>Payment Integration</option>
+                                <option>Business Account Setup</option>
+                                <option>Developer API Support</option>
+                                <option>Other Inquiries</option>
+                            </select>
+
+                            <label class="small fw-bold text-sub mb-2">YOUR MESSAGE</label>
+                            <textarea class="input-field" rows="4"
+                                placeholder="Briefly describe your request..."></textarea>
+
+                            <button type="submit" class="btn-perfect mt-3">
+                                Send Request <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                            <div class="text-center mt-4">
+                                <p class="text-sub mb-0" style="font-size: 12px;">
+                                    <i class="fa-solid fa-circle-check text-success me-1"></i>
+                                    We typically respond in less than 2 hours during business days.
+                                </p>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Mobile Contacts -->
-                <div class="col-lg-4">
-                    <div class="card h-100 min-vh-50 border-0 rounded-4 shadow-sm text-center p-5"
-                        style="background-color: #8c61db;">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-white mx-auto mb-4"
-                            style="width: 80px; height: 80px;">
-                            <i class="bi bi-phone-vibrate fs-2 text-success"></i>
-                        </div>
-                        <h3 class="fw-bold mb-4 text-light">Mobile</h3>
-                        <div class="d-flex flex-column align-items-center gap-3 text-dark">
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="bi bi-credit-card-2-back text-success fs-4"></i>
-                                <span class="fw-bold text-light">0700 888 8328 / 0201 8888328</span>
-                            </div>
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="bi bi-telephone text-success fs-4"></i>
-                                <span class="fw-bold text-light">0700 8888 329 / 0201 8888329</span>
-                            </div>
-                            <div class="d-flex align-items-center gap-2">
-                                <a href="https://wa.me/2349076602239?text=Hello%20SendNaw%20team%21 "
-                                    class="btn btn-success rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2">
-                                    <i class="bi bi-whatsapp"></i>
-                                    <span>Chat with us on WhatsApp</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="p-4 p-md-5 position-relative overflow-hidden shadow-lg border-0"
+                style="background: linear-gradient(135deg, #6a0dad 0%, #7c3aed 100%); border-radius: 2rem;">
+
+                <div class="position-absolute translate-middle"
+                    style="top: 0; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);">
                 </div>
 
-                <!-- Social Media -->
-                <div class="col-lg-4">
-                    <div class="card h-100 min-vh-50 border-0 rounded-4 shadow-sm text-center p-5"
-                        style="background-color: #8c61db;">
-                        <div class="d-flex justify-content-center gap-3 mb-4">
-                            <i class="bi bi-instagram fs-3 text-danger"></i>
-                            <i class="bi bi-twitter-x fs-3 text-dark"></i>
-                            <i class="bi bi-facebook fs-3 text-primary"></i>
-                        </div>
-                        <h3 class="fw-bold mb-4 text-light">Social Media</h3>
-                        <div class="d-flex flex-column gap-2">
-                            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-light fw-bold">
-                                <i class="bi bi-instagram fs-4 text-danger"></i> Instagram
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-light fw-bold">
-                                <i class="bi bi-twitter-x fs-4"></i> Twitter
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-light fw-bold">
-                                <i class="bi bi-facebook fs-4 text-primary"></i> Facebook
-                            </a>
+                <div class="row align-items-center position-relative">
+                    <div class="col-lg-7 text-white mb-4 mb-lg-0">
+                        <span class="badge rounded-pill mb-3 py-2 px-3" style="background: rgba(255,255,255,0.15);">
+                            <i class="fa-solid fa-sparkles me-1"></i> New Features Weekly
+                        </span>
+                        <h2 class="display-6 fw-bold mb-3" style="letter-spacing: -1px;">Stay updated with SendNaw</h2>
+                        <p class="lead opacity-75 mb-0">
+                            Join 10k+ users receiving security tips and feature announcements.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <form class="bg-white p-2 shadow-sm" style="border-radius: 1rem;">
+                            <div class="input-group">
+                                <input type="email" class="form-control border-0 shadow-none ps-3"
+                                    placeholder="name@company.com" style="font-size: 1rem; height: 50px;">
+
+                                <button class="btn btn-dark px-4 fw-bold" type="submit"
+                                    style="border-radius: 0.75rem; transition: transform 0.2s;">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="d-flex align-items-center gap-2 mt-3 text-white-50">
+                            <i class="fa-solid fa-shield-halved small"></i>
+                            <span style="font-size: 12px;">No spam. Secure & encrypted.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <!-- desk section -->
@@ -330,7 +558,8 @@
                                 Us</a></li>
                         <li><a href="./Career.html"
                                 class="text-white-50 small text-decoration-none link-light">Careers</a></li>
-                        <li><a href="./contact.html.html" class="text-white-50 small text-decoration-none link-light">Contact
+                        <li><a href="./contact.html.html"
+                                class="text-white-50 small text-decoration-none link-light">Contact
                                 Us</a></li>
                     </ul>
                 </div>

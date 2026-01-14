@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons (swap icons easily) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- AOS link -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Bills and airtime</title>
+    <!-- favicon -->
+    <link rel="icon" href="images/favicon.ico" sizes="50x50" type="image/x-icon">
+    <!-- custom css link -->
+    <link rel="stylesheet" href="./script.css">
+</head>
+
+<body>
+
+
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white bg-opacity-75 border-bottom py-3"
+        style="backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div class="container">
+            <!-- logo anchor -->
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+                <img src="/images/SendNaw_logo_main-removebg-preview.png" alt="SendNaw" height="45">
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sendnawNav">
+                <span class="navbar-toggler-icon"></span>
+                <span class="visually-hidden">toggle icon</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="sendnawNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+
+                    <li class="nav-item dropdown position-static mx-lg-3">
+                        <a class="nav-link dropdown-toggle fw-semibold text-dark px-0" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            Features
+                        </a>
+                        <div class="dropdown-menu shadow-lg border-0 rounded-4 mt-2 p-4"
+                            style="width: 100%; max-width: 600px; left: 50%; transform: translateX(-50%);">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-primary mb-3"
+                                        style="letter-spacing: 1px;">Payments</h6>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/instant-transfers.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"><i
+                                                class="bi bi-send-fill"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Instant Transfers</div>
+                                            <small class="text-muted">Move money in seconds</small>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/phone-number-pay.html">
+                                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success"><i
+                                                class="bi bi-phone-vibrate"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Phone Number Pay</div>
+                                            <small class="text-muted">No account number needed</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-warning mb-3"
+                                        style="letter-spacing: 1px;">Lifestyle</h6>
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/bills-airtime.html">
+                                        <div class="bg-warning bg-opacity-10 p-2 rounded-3 text-warning"><i
+                                                class="bi bi-lightning-charge-fill"></i></div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Bills & Airtime</div>
+                                            <small class="text-muted">Utility payments made easy</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
+                                            style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
+                                            <i class="bi bi-credit-card-2-front-fill"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Virtual Cards</div>
+                                            <small class="text-muted">Shop globally with your cards</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-danger mb-3"
+                                        style="letter-spacing: 1px;">Global Commerce</h6>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/virtual-card-page.html#usd-cards">
+                                        <div class="bg-danger bg-opacity-10 p-2 rounded-3 text-danger">
+                                            <i class="bi bi-globe2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">USD Virtual Cards</div>
+                                            <small class="text-muted">Pay for Netflix, Amazon & Ads</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/multi-currency-wallets.html">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
+                                            style="color: #6f42c1 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Multi-Currency Wallets</div>
+                                            <small class="text-muted">Hold Naira, Dollars, and Pounds</small>
+                                        </div>
+                                    </a>
+
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/sendnawpay.html">
+                                        <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info">
+                                            <i class="bi bi-cart-check-fill"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">SendNaw Pay</div>
+                                            <small class="text-muted">One-click checkout for merchants</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- Loan Feature Div -->
+                                <div class="col-md-6">
+                                    <h6 class="text-uppercase small fw-bold text-success mb-3"
+                                        style="letter-spacing: 1px;">Credit & Growth</h6>
+
+                                    <!-- Loan Link Item -->
+                                    <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3"
+                                        href="./loan.html">
+                                        <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success">
+
+                                            <i class="bi bi-cash-stack"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">Instant Loans</div>
+
+                                            <small class="text-muted">Flexible credit with low interest</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown mx-lg-3">
+                        <a class="nav-link dropdown-toggle fw-semibold text-dark px-0" href="#" role="button"
+                            data-bs-toggle="dropdown"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            Company
+                        </a>
+                        <div class="dropdown-menu shadow-lg border-0 rounded-4 p-2 mt-2" style="min-width: 200px;">
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./about.html">About Us</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./Career.html">Careers</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./contact.html">Contact</a>
+                            <a class="dropdown-item py-2 rounded-2 fw-medium" href="./loan.html#calculator">Loan calculator</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item mx-lg-3">
+                        <a class="nav-link fw-semibold text-dark px-0" href="./faq.html"
+                            style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                            onmouseover="this.style.borderBottomColor='#6f42c1'"
+                            onmouseout="this.style.borderBottomColor='transparent'">
+                            FAQ
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="./signin.html" class="nav-link fw-bold px-0 text-dark text-decoration-none"
+                        style="transition: border-color 0.3s ease; border-bottom: 2px solid transparent !important;"
+                        onmouseover="this.style.borderBottomColor='#6f42c1'"
+                        onmouseout="this.style.borderBottomColor='transparent'">
+                        Sign in
+                    </a>
+                    <a href="./signup.html" class="btn px-4 py-2 rounded-pill fw-bold shadow-sm border-0"
+                        style="background-color: #6f42c1; color: #fff;">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end of navbar -->
+
+
+    <!-- airtime-bills hero page starts here -->
+    <section
+        style="padding: 80px 0; background-color: #ffffff; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; overflow: hidden;">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1
+                        style="color: #6610f2; font-weight: 800; font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;">
+                        Pay bills & buy airtime in <span style="color:  #6610f2;">seconds</span>
+                    </h1>
+                    <p
+                        style="color: #555555; font-size: 1.25rem; margin-bottom: 35px; max-width: 480px; line-height: 1.6;">
+                        Quickly top up your phone, pay for electricity, and renew cable TV subscriptions without leaving
+                        the Sendnaw app.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <a href="#" style="text-decoration: none; transition: opacity 0.3s;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                alt="App Store" style="height: 48px;">
+                        </a>
+                        <a href="#" style="text-decoration: none; transition: opacity 0.3s;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                alt="Google Play" style="height: 48px;">
+                        </a>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3"
+                        style="padding-top: 25px; border-top: 1px solid #f0f0f0;">
+                        <span
+                            style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Trusted
+                            & Secured</span>
+                        <div style="height: 20px; width: 1px; background: #ddd;"></div>
+                        <span style="font-size: 0.85rem; color: #666; font-weight: 600;">CBN Licensed</span>
+                        <span style="font-size: 0.85rem; color: #666; font-weight: 600;">NDIC Insured</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 text-center" style="position: relative;">
+                    <div
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 480px; height: 480px; background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%); border-radius: 50%; z-index: 1;">
+                    </div>
+
+                    <div style="position: relative; z-index: 2;">
+                        <div
+                            style="background: #ffffff; width: 290px; height: 580px; border-radius: 45px; border: 10px solid #222; margin: 0 auto; box-shadow: 0 40px 80px -20px rgba(75, 0, 130, 0.25); overflow: hidden; display: flex; flex-direction: column;">
+
+                            <div
+                                style="height: 30px; background: #fff; padding: 15px 25px 5px; display: flex; justify-content: space-between; font-size: 12px; font-weight: bold;">
+                                <span>9:41</span>
+                                <span><i class="bi bi-battery-half"></i></span>
+                            </div>
+
+                            <div style="padding: 15px; text-align: left;">
+                                <h5 style="color: #6610f2; font-weight: 800; margin: 0;">Bills & Airtime</h5>
+                            </div>
+
+                            <div style="padding: 0 15px;">
+                                <div
+                                    style="background: #f8f7ff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #e0d7f7;">
+                                    <div
+                                        style="font-size: 0.7rem; color: #6f42c1; font-weight: bold; margin-bottom: 8px;">
+                                        SELECT PROVIDER</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div
+                                            style="width: 45px; height: 45px; background: #ffda00; border-radius: 10px; display: grid; place-items: center; font-size: 10px; font-weight: bold;">
+                                            MTN</div>
+                                        <div
+                                            style="width: 45px; height: 45px; background: #ed1c24; border-radius: 10px; display: grid; place-items: center; font-size: 10px; font-weight: bold; color: white;">
+                                            Airtel</div>
+                                        <div
+                                            style="width: 45px; height: 45px; background: #00a651; border-radius: 10px; display: grid; place-items: center; font-size: 10px; font-weight: bold; color: white;">
+                                            Glo</div>
+                                        <div
+                                            style="width: 45px; height: 45px; background: #000; border-radius: 10px; display: grid; place-items: center; font-size: 10px; font-weight: bold; color: white;">
+                                            9mob</div>
+                                    </div>
+                                </div>
+
+                                <div style="text-align: left; margin-bottom: 15px;">
+                                    <label
+                                        style="font-size: 0.75rem; color: #666; display: block; margin-bottom: 5px;">Phone
+                                        Number</label>
+                                    <div
+                                        style="background: #eee; height: 40px; border-radius: 8px; padding: 10px; font-size: 0.8rem; color: #333;">
+                                        0801 234 5678</div>
+                                </div>
+
+                                <div style="text-align: left; margin-bottom: 20px;">
+                                    <label
+                                        style="font-size: 0.75rem; color: #666; display: block; margin-bottom: 5px;">Select
+                                        Amount</label>
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                            <div
+                                                style="border: 1px solid #6f42c1; border-radius: 8px; text-align: center; padding: 8px; font-size: 0.75rem; color: #6f42c1; font-weight: bold;">
+                                                ₦500</div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div
+                                                style="background: #6f42c1; border-radius: 8px; text-align: center; padding: 8px; font-size: 0.75rem; color: white; font-weight: bold;">
+                                                ₦1,000</div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div
+                                                style="border: 1px solid #6f42c1; border-radius: 8px; text-align: center; padding: 8px; font-size: 0.75rem; color: #6f42c1; font-weight: bold;">
+                                                ₦2,000</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button
+                                    style="width: 100%; background: #6610f2; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: bold; box-shadow: 0 10px 20px rgba(75, 0, 130, 0.2);">Buy
+                                    Airtime Now</button>
+                            </div>
+
+                            <div
+                                style="margin-top: auto; padding: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-around;">
+                                <span style="font-size: 1.2rem; opacity: 0.3;"><i class="bi bi-houses"></i></span>
+                                <span style="font-size: 1.2rem; color: #6f42c1;"><i class="bi bi-journal"></i></span>
+                                <span style="font-size: 1.2rem; opacity: 0.3;"><i class="bi bi-person-fill"></i></span>
+                            </div>
+                        </div>
+
+                        <div
+                            style="position: absolute; top: 10%; right: -20px; background:rgb(255, 229, 226); color: #6610f2; padding: 10px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3; overflow: hidden;">
+                            <img src="https://i.pinimg.com/1200x/56/64/ce/5664ce800352d0d526d6a88d4b1d078d.jpg"
+                                alt="airtel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 25%; right: -20px; background: rgb(244, 249, 193); color: #6610f2; padding: 10px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3; overflow: hidden;">
+                            <img src="https://i.pinimg.com/736x/53/e6/71/53e6717a6484f997f5d555bb1ce83b15.jpg"
+                                alt="airtel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div
+                            style="position: absolute; top: 10%; right: -20px; background:rgb(255, 229, 226); color: #6610f2; padding: 10px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3; overflow: hidden;">
+                            <img src="https://i.pinimg.com/1200x/56/64/ce/5664ce800352d0d526d6a88d4b1d078d.jpg"
+                                alt="airtel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div
+                            style="position: absolute; top: 10%; left: -20px; background:rgb(214, 245, 225); color: #6610f2; padding: 10px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3; overflow: hidden;">
+                            <img src="https://i.pinimg.com/736x/80/7d/84/807d84f52f961a253331a15731877a43.jpg" alt="Glo"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: 25%; left: -20px; background: rgb(255, 240, 161); color: #6610f2; padding: 10px; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3; overflow: hidden;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/MTN_Logo.svg/1200px-MTN_Logo.svg.png"
+                                alt="MTN" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ends here -->
+
+    <!-- airtime-bills feature section starts here -->
+    <section
+        style="padding: 60px 0; background-color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-md-4">
+                    <div
+                        style="background: #ffffff; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%; transition: transform 0.3s ease;">
+                        <div
+                            style="width: 50px; height: 50px; background-color: #e0d7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b0082"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                <path d="M9 17.05a7 7 0 0 1 6 0"></path>
+                                <circle cx="12" cy="20" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h5 style="color: #4b0082; font-weight: 700; line-height: 1.4; font-size: 1.15rem;">
+                            Buy airtime from any Nigerian mobile network.
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div
+                        style="background: #ffffff; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%; transition: transform 0.3s ease;">
+                        <div
+                            style="width: 50px; height: 50px; background-color: #e0d7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b0082"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <h5 style="color: #4b0082; font-weight: 700; line-height: 1.4; font-size: 1.15rem;">
+                            Top up airtime on your phone in a few seconds.
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div
+                        style="background: #ffffff; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%; transition: transform 0.3s ease;">
+                        <div
+                            style="width: 50px; height: 50px; background-color: #e0d7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b0082"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <h5 style="color: #4b0082; font-weight: 700; line-height: 1.4; font-size: 1.15rem;">
+                            Subscribe to your favourite mobile data plan easily.
+                        </h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white overflow-hidden">
+        <div class="container py-5 mt-3">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 position-relative d-flex justify-content-center align-items-center mb-5 mb-lg-0">
+                    <div class="position-absolute rounded-circle"
+                        style="width: 520px; height: 520px; background-color: #fff8e7; z-index: 1; top: 50%; left: 45%; transform: translate(-50%, -50%); opacity: 0.7;">
+                    </div>
+
+                    <div class="bg-white rounded-4 shadow-lg p-0 overflow-hidden position-relative"
+                        style="width: 100%; max-width: 360px; z-index: 2; border: 1px solid rgba(0,0,0,0.03);">
+
+                        <div class="py-4 text-center border-bottom">
+                            <h6 class="fw-bold m-0" style="color: #000; font-size: 1.1rem;">Choose Network</h6>
+                        </div>
+
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex align-items-center py-3 px-4 border-bottom">
+                                <img src="https://i.pinimg.com/736x/53/e6/71/53e6717a6484f997f5d555bb1ce83b15.jpg"
+                                    alt="9mobile" class="rounded-circle me-3"
+                                    style="width: 32px; height: 32px; object-fit: contain;">
+                                <span class="fw-medium" style="color: #40196d;">9mobile</span>
+                            </div>
+
+                            <div class="list-group-item d-flex align-items-center py-3 px-4 border-bottom">
+                                <img src="https://i.pinimg.com/1200x/56/64/ce/5664ce800352d0d526d6a88d4b1d078d.jpg"
+                                    alt="Airtel" class="rounded-circle me-3"
+                                    style="width: 32px; height: 32px; object-fit: contain;">
+                                <span class="fw-medium" style="color: #40196d;">Airtel</span>
+                            </div>
+
+                            <div class="list-group-item d-flex align-items-center py-3 px-4 border-bottom">
+                                <img src="https://i.pinimg.com/736x/80/7d/84/807d84f52f961a253331a15731877a43.jpg"
+                                    alt="Glo" class="rounded-circle me-3"
+                                    style="width: 32px; height: 32px; object-fit: contain;">
+                                <span class="fw-medium" style="color: #40196d;">Glo</span>
+                            </div>
+
+                            <div class="list-group-item d-flex align-items-center py-3 px-4 border-0">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/MTN_Logo.svg/1200px-MTN_Logo.svg.png"
+                                    alt="MTN" class="rounded-circle me-3"
+                                    style="width: 32px; height: 32px; object-fit: contain;">
+                                <span class="fw-medium" style="color: #40196d;">MTN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5 text-center text-lg-start">
+                    <h2 class="display-5 fw-bold mb-4" style="color: #40196d; line-height: 1.1; font-weight: 800;">
+                        Find all Nigerian <br>mobile networks on <br>Sendnaw
+                    </h2>
+                    <p class="fs-5 mb-4" style="color: #40196d; font-weight: 400; max-width: 480px;">
+                        Buy Airtel, Glo, MTN and 9Mobile airtime and internet data directly from your account.
+                    </p>
+                    <a href="/signin.html" class="text-decoration-none fw-bold d-inline-flex align-items-center fs-5"
+                        style="color: #40196d; border-bottom: 2px solid transparent;">
+                        Join Sendnaw
+                        <svg class="ms-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- airtime-bills feature section ends here -->
+    <section
+        style="padding: 80px 0; background-color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center mb-5 mb-lg-0">
+                    <div style="position: relative; display: inline-block;">
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 450px; height: 450px; background-color: #e6f9f0; border-radius: 50%; z-index: 1;">
+                        </div>
+                        <div
+                            style="position: relative; z-index: 2; background: white; width: 270px; height: 550px; border-radius: 40px; border: 10px solid #222; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.12); overflow: hidden;">
+                            <div style="padding: 25px 20px; text-align: center;">
+                                <div
+                                    style="font-size: 14px; font-weight: 800; color: #4b0082; margin-bottom: 40px; position: relative;">
+                                    <span style="position: absolute; left: 0; opacity: 0.5;">&lsaquo;</span> Confirm
+                                </div>
+                                <div style="font-size: 11px; color: #888; margin-bottom: 5px;">To:</div>
+                                <div style="font-size: 20px; font-weight: 800; color: #4b0082; margin-bottom: 25px;">
+                                    0805 108 0805</div>
+
+                                <div
+                                    style="background: #f8f7ff; border-radius: 15px; padding: 18px; text-align: left; font-size: 12px; border: 1px solid #efeaff;">
+                                    <div
+                                        style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #666;">
+                                        <span>Amount</span><span
+                                            style="font-weight: 800; color: #4b0082;">₦10,000.00</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #666;">
+                                        <span>Fee</span><span style="font-weight: 800; color: #4b0082;">₦0.00</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; color: #666;">
+                                        <span>Network</span><span style="font-weight: 800; color: #00a651;">● GLO</span>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 120px;">
+                                    <div
+                                        style="width: 60px; height: 60px; background: #4b0082; border-radius: 18px; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(75, 0, 130, 0.3);">
+                                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2a5 5 0 0 0-5 5v4a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z"></path>
+                                            <path d="M19 11a7 7 0 0 1-14 0"></path>
+                                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                                        </svg>
+                                    </div>
+                                    <div
+                                        style="font-size: 11px; color: #4b0082; font-weight: 700; margin-top: 15px; letter-spacing: 0.5px;">
+                                        TAP TO CONFIRM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5">
+                    <h2
+                        style="color: #6610f2; font-weight: 800; font-size: 3.2rem; line-height: 1.1; margin-bottom: 25px;">
+                        Send airtime to your friends and family.
+                    </h2>
+                    <p style="color: #555555; font-size: 1.25rem; margin-bottom: 35px; line-height: 1.6;">
+                        Recharge any Nigerian phone number from your Sendnaw app even when you’re abroad. No hidden
+                        fees, just instant value.
+                    </p>
+                    <a href="#"
+                        style="color: #6f42c1; font-weight: 700; text-decoration: none; font-size: 1.15rem; display: flex; align-items: center;">
+                        Learn How To Buy Airtime <span style="margin-left: 12px; font-size: 1.4rem;">&rsaquo;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section
+        style="padding: 80px 0; background-color: #fcfcfc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-6 pe-lg-5">
+                    <h2
+                        style="color: #000000; font-weight: 800; font-size: 3.2rem; line-height: 1.1; margin-bottom: 25px;">
+                        Get your tokens on the app and by email.
+                    </h2>
+                    <p style="color: #333333; font-size: 1.25rem; margin-bottom: 40px; line-height: 1.6;">
+                        Sendnaw makes it easy for you to find your meter, internet and TV tokens without checking your
+                        inbox. Pay once, stay connected.
+                    </p>
+                    <a href="#"
+                        style="background: #000000; color: #ffffff; padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 700; display: inline-block; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                        Download Sendnaw Now <span style="margin-left: 10px;">&rsaquo;</span>
+                    </a>
+                </div>
+
+                <div class="col-lg-6 text-center mb-5 mb-lg-0">
+                    <div
+                        style="background-color: #e0f4ff; border-radius: 30px; padding: 50px 40px 0 40px; display: inline-block; position: relative; overflow: hidden; width: 100%; max-width: 450px;">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.15; background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%); background-size: 15px 15px;">
+                        </div>
+
+                        <div
+                            style="position: relative; z-index: 2; background: white; width: 270px; height: 420px; border-radius: 35px 35px 0 0; border: 10px solid #222; border-bottom: none; margin: 0 auto; box-shadow: 0 -10px 40px rgba(0,0,0,0.1);">
+                            <div style="padding: 20px; text-align: left;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                                    <span style="font-size: 14px; font-weight: 800;">Transaction</span>
+                                    <span
+                                        style="font-size: 10px; background: #000; color: #fff; padding: 2px 8px; border-radius: 4px;">Share</span>
+                                </div>
+
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="font-size: 22px; font-weight: 800; margin-bottom: 5px;">-₦2,000.00</div>
+                                    <div style="font-size: 10px; color: #888;">EKEDC Electricity ● May 13, 2026</div>
+                                </div>
+
+                                <div style="border-top: 1px dashed #ddd; padding-top: 15px;">
+                                    <div style="margin-bottom: 12px;">
+                                        <div style="font-size: 9px; color: #999; text-transform: uppercase;">Meter
+                                            Number</div>
+                                        <div style="font-size: 12px; font-weight: 700;">0123456789</div>
+                                    </div>
+                                    <div style="margin-bottom: 12px;">
+                                        <div style="font-size: 9px; color: #999; text-transform: uppercase;">Token Units
+                                        </div>
+                                        <div
+                                            style="font-size: 13px; font-weight: 800; color: #6610f2; letter-spacing: 1px;">
+                                            4522 - 8812 - 0912</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section
+        style="padding: 80px 0; background-color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div
+                        style="position: relative; height: 400px; background: #f3eaff; border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: radial-gradient(#6610f2 1px, transparent 1px); background-size: 20px 20px;">
+                        </div>
+
+                        <div
+                            style="position: absolute; left: 10%; top: 15%; background: white; width: 220px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1; padding: 15px;">
+                            <div style="font-size: 10px; font-weight: 800; text-align: center; margin-bottom: 15px;">
+                                Choose a Provider</div>
+                            <div
+                                style="font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; display: flex; align-items: center;">
+                                <span
+                                    style="width: 20px; height: 20px; background: #003366; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                SPECTRANET NG
+                            </div>
+                            <div
+                                style="font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; display: flex; align-items: center;">
+                                <span
+                                    style="width: 20px; height: 20px; background: #00a651; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                GLO NG DATA
+                            </div>
+                            <div style="font-size: 11px; display: flex; align-items: center;"><span
+                                    style="width: 20px; height: 20px; background: #ffda00; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                MTN NG DATA</div>
+                        </div>
+
+                        <div
+                            style="position: absolute; right: 10%; bottom: 15%; background: white; width: 220px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); z-index: 2; padding: 15px;">
+                            <div style="font-size: 10px; font-weight: 800; text-align: center; margin-bottom: 15px;">
+                                Choose A Service</div>
+                            <div
+                                style="font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; display: flex; align-items: center;">
+                                <span
+                                    style="width: 20px; height: 20px; background: #00aeef; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                DSTV
+                            </div>
+                            <div
+                                style="font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; display: flex; align-items: center;">
+                                <span
+                                    style="width: 20px; height: 20px; background: #ed1c24; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                GOTV
+                            </div>
+                            <div style="font-size: 11px; display: flex; align-items: center;"><span
+                                    style="width: 20px; height: 20px; background: #222; border-radius: 50%; display: inline-block; margin-right: 10px;"></span>
+                                SHOWMAX</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5">
+                    <h2 style="color: #000; font-weight: 800; font-size: 3rem; line-height: 1.1; margin-bottom: 25px;">
+                        Find all popular internet and TV packages.
+                    </h2>
+                    <p style="color: #333; font-size: 1.2rem; margin-bottom: 35px; line-height: 1.6;">
+                        Whether you have a favourite internet or TV subscription package, you'll find it on the Sendnaw
+                        app.
+                    </p>
+                    <a href="/signup.html"
+                        style="background: #000; color: #fff; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block;">
+                        Open a Sendnaw Account <span style="margin-left: 10px;">&rsaquo;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section
+        style="padding: 40px 0; background-color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <div
+                style="background-color: #0b0f1a; border-radius: 30px; padding: 60px; color: #fff; position: relative; overflow: hidden;">
+
+                <!-- subtle pattern -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.15;
+                background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0);
+                background-size: 42px 42px;">
+                </div>
+
+                <div class="row align-items-center">
+                    <!-- TEXT -->
+                    <div class="col-lg-6" style="position: relative; z-index: 2;">
+                        <h2 style="font-weight: 800; font-size: 3.2rem; line-height: 1.1; margin-bottom: 25px;">
+                            Send money globally with <span style="color:#ffc107">Sendnaw</span>
+                        </h2>
+
+                        <p style="font-size: 1.15rem; margin-bottom: 35px; opacity: 0.85; max-width: 480px;">
+                            Fast, secure, and seamless money transfers across borders.
+                            Pay bills, send funds, and manage your finances — all in one app.
+                        </p>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                                alt="Download on the App Store" height="40">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                alt="Download on Google Play" height="40">
+                        </div>
+
+                        <div style="font-size: 0.8rem; opacity: 0.6;">
+                            Secure Transactions • Encrypted • Trusted Globally
+                        </div>
+                    </div>
+
+                    <!-- PHONE MOCKUPS -->
+                    <div class="col-lg-6 text-center mt-5 mt-lg-0" style="position: relative; height: 350px;">
+
+                        <!-- Back phone -->
+                        <div style="position: absolute; bottom: -60px; right: 12%; width: 220px; height: 400px;
+                        background: #ffffff; border-radius: 30px; border: 6px solid #1c1c1c;
+                        box-shadow: 0 20px 50px rgba(0,0,0,0.45); opacity: 0.9;">
+                            <div style="padding: 20px; color: #000;">
+                                <div
+                                    style="font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 30px;">
+                                    Transfer Successful
+                                </div>
+                                <div style="font-size: 22px; font-weight: 800; text-align: center; color: #00b37a;">
+                                    ₦50,000.00
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Front phone -->
+                        <div style="position: absolute; bottom: -100px; left: 12%; width: 220px; height: 400px;
+                        background: #ffffff; border-radius: 30px; border: 6px solid #1c1c1c;
+                        box-shadow: 0 25px 60px rgba(0,0,0,0.55); z-index: 3;">
+                            <div style="padding: 20px; color: #000;">
+                                <div
+                                    style="font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 30px;">
+                                    Send Money
+                                </div>
+                                <div style="font-size: 22px; font-weight: 800; text-align: center; color: #0066ff;">
+                                    ₦8,000.00
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ends here -->
+
+    <section
+        style="padding: 60px 0; background-color: #f9f9f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <h2 style="text-align: center; font-weight: 800; font-size: 2.8rem; margin-bottom: 50px; color: #0b0f1a;">
+                Frequently Asked Questions
+            </h2>
+
+            <div class="accordion" id="sendnawFAQ">
+
+                <!-- FAQ 1 -->
+                <div class="accordion-item" style="border-radius: 15px; margin-bottom: 15px;">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                            style="border-radius: 15px; font-weight: 600; color: #0b0f1a;">
+                            How do I pay my bills using Sendnaw?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#sendnawFAQ">
+                        <div class="accordion-body" style="color: #333; font-size: 1rem;">
+                            Open your Sendnaw app, select the "Pay Bills" option, choose your biller (electricity,
+                            water, cable, etc.), enter your account details, and confirm payment. Your transaction is
+                            processed instantly and securely.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item" style="border-radius: 15px; margin-bottom: 15px;">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                            style="border-radius: 15px; font-weight: 600; color: #0b0f1a;">
+                            Can I buy airtime for any network?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#sendnawFAQ">
+                        <div class="accordion-body" style="color: #333; font-size: 1rem;">
+                            Yes! Sendnaw allows you to purchase airtime for all major Nigerian networks, including MTN,
+                            Glo, Airtel, and 9mobile. Simply select "Buy Airtime", choose your network, enter the phone
+                            number and amount, then confirm.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item" style="border-radius: 15px; margin-bottom: 15px;">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                            style="border-radius: 15px; font-weight: 600; color: #0b0f1a;">
+                            Are my transactions safe?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#sendnawFAQ">
+                        <div class="accordion-body" style="color: #333; font-size: 1rem;">
+                            Absolutely! All Sendnaw transactions are encrypted with bank-level security. Your account
+                            details and payments are protected, ensuring safe and reliable transfers every time.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="accordion-item" style="border-radius: 15px; margin-bottom: 15px;">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"
+                            style="border-radius: 15px; font-weight: 600; color: #0b0f1a;">
+                            Is there a limit on bills or airtime purchases?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#sendnawFAQ">
+                        <div class="accordion-body" style="color: #333; font-size: 1rem;">
+                            Yes, there are daily and monthly limits depending on your account verification level.
+                            Verified accounts enjoy higher transaction limits. Check your limits in the "Account
+                            Settings" section of the app.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- footer -->
+    <footer class="pt-5 pb-4 bg-dark">
+        <div class="container text-white">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-4">
+                    <!-- logo anchor -->
+                    <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+                        <img src="/images/SendNaw_logo_main-removebg-preview.png" alt="SendNaw" height="45">
+                    </a>
+                    <p class="small pe-lg-5 text-white-50 pt-5">
+                        SendNaw is a modern financial platform providing seamless banking, payments, and lifestyle
+                        services for the digital age.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="text-white opacity-50 text-decoration-none"><i
+                                class="bi bi-twitter-x fs-4"></i></a>
+                        <a href="https://www.instagram.com/joinsendnaw?igsh=MW5tb2Y4Mjd3ZnlhbA=="
+                            class="text-white opacity-50 text-decoration-none"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white opacity-50 text-decoration-none"><i
+                                class="bi bi-facebook fs-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Products</h6>
+                    <ul class="list-unstyled d-grid gap-3">
+                        <li><a href="#" class="text-white-50 small text-decoration-none link-light">Personal Account</a>
+                        </li>
+                        <li><a href="./virtual-card-page.html"
+                                class="text-white-50 small text-decoration-none link-light">SendNaw Cards</a>
+                        </li>
+                        <li><a href="#" class="text-white-50 small text-decoration-none link-light">Bill Payments</a>
+                        </li>
+                        <li><a href="./savings-page.html"
+                                class="text-white-50 small text-decoration-none link-light">Savings</a></li>
+                        <li><a href="./loan.html" class="text-white-50 small text-decoration-none link-light">Loan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Company</h6>
+                    <ul class="list-unstyled d-grid gap-3">
+                        <li><a href="./about.html" class="text-white-50 small text-decoration-none link-light">About
+                                Us</a></li>
+                        <li><a href="./Career.html"
+                                class="text-white-50 small text-decoration-none link-light">Careers</a></li>
+                        <li><a href="./contact.html.html"
+                                class="text-white-50 small text-decoration-none link-light">Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Regulatory Information
+                    </h6>
+                    <p class="text-white-50 small mb-4 lh-lg">
+                        SendNaw is a financial technology company, not a bank. Banking services are provided by our
+                        licensed partner banks. All deposits are insured by the NDIC.
+                    </p>
+                    <div class="p-3 rounded-3 bg-white bg-opacity-10">
+                        <p class="small text-white mb-0 fw-bold">Verified Provider</p>
+                        <p class="text-white-50 mb-0" style="font-size: 11px;">CBN Licensed | NDIC Insured</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary opacity-25 my-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="text-white-50 small mb-0">&copy; 2025 SendNaw Technologies Limited. RC: 1234567</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="./privacy-policy.html"
+                            class="text-white-50 small text-decoration-none link-light">Privacy.</a>
+                        <a href="./terms-condition.html"
+                            class="text-white-50 small text-decoration-none link-light">Terms and Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS LINK -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            delay: 900
+        });
+    </script>
+
+    <script src="./script.js"></script>
+    <!-- Bootsrap js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
