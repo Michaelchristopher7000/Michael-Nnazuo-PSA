@@ -23,8 +23,8 @@
 
   <style>
     :root {
-      --primary: #6a0dad;
-      --primary-dark: #4b0082;
+      --primary: #6f42c1;
+      --primary-dark: #6610f2;
       --accent: #00d4ff;
       /* Modern cyan accent */
       --surface: #ffffff;
@@ -38,18 +38,9 @@
       overflow-x: hidden;
     }
 
-    /* --- UI Components --- */
-
-    /* Glassmorphism Navbar */
-    .navbar-glass {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
     /* Gradient Text */
     .text-gradient {
-      background: linear-gradient(90deg, var(--primary) 0%, #a239ea 100%);
+      background: linear-gradient(90deg, var(--primary) 0%, #6610f2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -173,6 +164,53 @@
       accent-color: var(--primary);
       height: 6px;
     }
+
+    input[type=range]::-webkit-slider-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(10px);
+      }
+    }
+
+    @keyframes pulse-purple {
+      0% {
+        box-shadow: 0 0 0 0 rgba(111, 66, 193, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(111, 66, 193, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(111, 66, 193, 0);
+      }
+    }
+
+    @keyframes shield-glow {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 2px rgba(13, 110, 253, 0));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 8px rgba(13, 110, 253, 0.5));
+      }
+    }
   </style>
 </head>
 
@@ -217,12 +255,22 @@
                       <small class="text-muted">Move money in seconds</small>
                     </div>
                   </a>
-                  <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/phone-number-pay.html">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-3 text-success"><i class="bi bi-phone-vibrate"></i>
+                  <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/sendnawpay.html">
+                    <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info">
+                      <i class="bi bi-cart-check-fill"></i>
                     </div>
                     <div>
-                      <div class="fw-bold text-dark">Phone Number Pay</div>
-                      <small class="text-muted">No account number needed</small>
+                      <div class="fw-bold text-dark">SendNaw Pay</div>
+                      <small class="text-muted">One-click checkout for merchants</small>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/cashback.html">
+                    <div class="bg-info bg-opacity-10 p-2 rounded-3" style="color: var(--orange);">
+                      <i class="bi bi-cash"></i>
+                    </div>
+                    <div>
+                      <div class="fw-bold text-dark">Cashback</div>
+                      <small class="text-muted">Earn from payments</small>
                     </div>
                   </a>
                 </div>
@@ -245,6 +293,16 @@
                     <div>
                       <div class="fw-bold text-dark">Virtual Cards</div>
                       <small class="text-muted">Shop globally with your cards</small>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/Gift-card.html">
+                    <div class="bg-primary bg-opacity-10 p-2 rounded-3 text-primary"
+                      style="color:#ff6347 !important; background-color: rgba(111, 66, 193, 0.1) !important;">
+                      <i class="bi bi-credit-card-2-front-fill"></i>
+                    </div>
+                    <div>
+                      <div class="fw-bold text-dark">Gift Card</div>
+                      <small class="text-muted">Buy and sale your gift cards on sendnaw</small>
                     </div>
                   </a>
                 </div>
@@ -272,16 +330,6 @@
                     <div>
                       <div class="fw-bold text-dark">Multi-Currency Wallets</div>
                       <small class="text-muted">Hold Naira, Dollars, and Pounds</small>
-                    </div>
-                  </a>
-
-                  <a class="dropdown-item d-flex align-items-start gap-3 py-2 rounded-3" href="/sendnawpay.html">
-                    <div class="bg-info bg-opacity-10 p-2 rounded-3 text-info">
-                      <i class="bi bi-cart-check-fill"></i>
-                    </div>
-                    <div>
-                      <div class="fw-bold text-dark">SendNaw Pay</div>
-                      <small class="text-muted">One-click checkout for merchants</small>
                     </div>
                   </a>
                 </div>
@@ -321,7 +369,8 @@
               <a class="dropdown-item py-2 rounded-2 fw-medium" href="./about.html">About Us</a>
               <a class="dropdown-item py-2 rounded-2 fw-medium" href="./career.html">Careers</a>
               <a class="dropdown-item py-2 rounded-2 fw-medium" href="./contact.html.html">Contact</a>
-              <a class="dropdown-item py-2 rounded-2 fw-medium" href="./loan.html#calculator">Loan calculator</a>
+              <a class="dropdown-item py-2 rounded-2 fw-medium" href="./loan.html#calculator">Loan
+                calculator</a>
             </div>
           </li>
 
@@ -353,26 +402,45 @@
   <!-- End of Navbar -->
 
 
-
-  <section class="pt-5 pb-5 mt-5 d-flex align-items-center" style="min-height: 90vh;">
+  <!-- hero page -->
+  <section class="pt-3 pb-5 mt-3 d-flex align-items-center" style="min-height: 90vh;">
     <div class="container pt-5">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
           <div class="d-inline-block px-3 py-1 rounded-pill bg-white border mb-3 shadow-sm">
-            <small class="fw-bold text-primary">🚀 The #1 Digital Lender Concept</small>
+            <small class="fw-bold text-primary"><i class="bi bi-rocket-takeoff" style="color: deeppink;"></i> The #1
+              Digital Lender Concept</small>
           </div>
-          <h1 class="display-3 fw-800 mb-3 lh-1">
+          <h1 class="display-3 fw-bold mb-3 lh-1">
             Money when it <br>
             <span class="text-gradient">matters most.</span>
           </h1>
-          <p class="lead text-muted mb-5" style="max-width: 90%;">
+          <p class="text-muted mb-5" style="max-width: 90%; font-family: 'poppins', sans-serif;">
             Instant credit sent directly to your bank account.
             No paperwork, no collateral, no awkward conversations.
           </p>
-          <div class="d-flex flex-wrap gap-3">
-            <a href="#calculator" class="btn btn-primary-glow btn-lg rounded-pill px-5">Get Started</a>
-            <button class="btn btn-outline-dark btn-lg rounded-pill px-4 border-2">
-              <i class="bi bi-google-play me-2"></i>Download App
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+
+            <a href="#calculator"
+              class="btn btn-primary-glow btn-lg rounded-pill px-5 d-flex align-items-center gap-3 group border-2 border-transparent"
+              style="border: 2px solid transparent;">
+              <!-- <i class="bi bi-lightning-charge-fill fs-4"></i> -->
+
+              <div class="text-start">
+                <span class="d-block lh-1" style="font-size: 0.65rem; text-transform: uppercase; opacity: 0.8;">Apply
+                  Now</span>
+                <span class="fw-bold" style="font-size: 1rem;">Get Started</span>
+              </div>
+            </a>
+
+            <button
+              class="btn btn-outline-dark btn-lg rounded-pill px-4 border-2 d-flex align-items-center gap-2 hover-lift">
+              <i class="bi bi-google-play"></i>
+              <div class="text-start">
+                <span class="d-block lh-1" style="font-size: 0.65rem; text-transform: uppercase; opacity: 0.7;">Get it
+                  on</span>
+                <span class="fw-bold" style="font-size: 1rem;">Google Play</span>
+              </div>
             </button>
           </div>
           <div class="mt-4 pt-3 d-flex align-items-center gap-3">
@@ -430,257 +498,588 @@
       </div>
     </div>
   </section>
+  <!-- hero page ends here -->
 
-  <div class="py-4 border-top border-bottom bg-white">
+  <!-- business partners -->
+  <section style=" position: relative; overflow: hidden;">
+
     <div class="container">
-      <p class="text-center text-muted small text-uppercase fw-bold mb-3 ls-2">Secured & Powered By</p>
-      <div class="row text-center opacity-50 grayscale-wrapper justify-content-center align-items-center g-4">
-        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-shield-lock me-1"></i> PAYSTACK</div>
-        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-bank me-1"></i> INTERSWITCH</div>
-        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-credit-card me-1"></i> MASTERCARD</div>
-        <div class="col-6 col-md-2 fw-bold fs-5"><i class="bi bi-safe me-1"></i> NDIC</div>
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <span
+          style="background: #ffffff; color: #6a0dad; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; border: 1px solid rgba(106, 13, 173, 0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: inline-block;">
+          TRUSTED BY INDUSTRY GIANTS
+        </span>
       </div>
-    </div>
-  </div>
 
+      <div class="row g-4 justify-content-center align-items-center">
 
-  <section id="calculator" class="py-5 bg-white">
-    <div class="container py-5">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-5" data-aos="fade-up">
-          <h2 class="fw-bold mb-3">Transparent Rates. <br>No Hidden Fees.</h2>
-          <p class="text-muted mb-4">Use our calculator to see exactly what you repay. We charge a flat interest rate
-            based on your duration.</p>
-
-          <ul class="list-unstyled mb-4">
-            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Early
-              repayment discount</li>
-            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i>
-              Increases your credit score</li>
-            <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Instant
-              disbursement</li>
-          </ul>
-        </div>
-
-        <div class="col-lg-7">
-          <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-light" data-aos="zoom-in">
-            <div class="card-body p-4 p-md-5">
-
-              <div class="row">
-                <div class="col-md-7 mb-4 mb-md-0">
-                  <label class="fw-bold mb-3 d-flex justify-content-between">
-                    <span>Amount</span>
-                    <span class="text-primary" id="amountVal">₦50,000</span>
-                  </label>
-                  <input type="range" class="form-range mb-4" id="loanRange" min="10000" max="500000" step="5000"
-                    value="50000">
-
-                  <label class="fw-bold mb-2">Duration</label>
-                  <div class="d-flex gap-2 mb-4">
-                    <button class="btn btn-outline-primary active flex-fill duration-btn" data-days="15">15
-                      Days</button>
-                    <button class="btn btn-outline-primary flex-fill duration-btn" data-days="30">30 Days</button>
-                  </div>
-
-                  <div class="p-3 bg-white rounded-3 border">
-                    <div class="d-flex justify-content-between mb-2">
-                      <span class="text-muted small">Interest Rate</span>
-                      <span class="fw-bold small" id="rateVal">12%</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                      <span class="text-muted small">Total Repayment</span>
-                      <span class="fw-bold text-primary" id="totalVal">₦56,000</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-5 border-start-md d-flex flex-column align-items-center justify-content-center">
-                  <div class="donut-chart mb-3" id="visualChart">
-                    <div class="donut-hole">
-                      <small class="text-muted" style="font-size: 10px">REPAY</small>
-                      <span class="fw-bold small" id="chartTotal">₦56k</span>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-center gap-3 small">
-                    <div class="d-flex align-items-center gap-1">
-                      <div style="width:10px; height:10px; background:var(--primary); border-radius:50%;"></div> Loan
-                    </div>
-                    <div class="d-flex align-items-center gap-1">
-                      <div style="width:10px; height:10px; background:#e2e8f0; border-radius:50%;"></div> Interest
-                    </div>
-                  </div>
-
-                  <button class="btn btn-primary-glow w-100 mt-4 rounded-pill"
-                    onclick="alert('Proceeding to KYC Application...')">Apply Now</button>
-                </div>
-              </div>
-
+        <div class="col-6 col-lg-3">
+          <div
+            style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffffff; padding: 1.25rem; border-radius: 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+            <div
+              style="width: 44px; height: 44px; background: #eef2ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="bi bi-shield-lock-fill" style="color: #0d6efd; font-size: 1.25rem;"></i>
+            </div>
+            <div style="line-height: 1.2;">
+              <h6 style="margin: 0; font-weight: 800; font-size: 0.9rem; color: #1e293b;">PAYSTACK</h6>
+              <small
+                style="color: #64748b; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Payment
+                Gateway</small>
             </div>
           </div>
         </div>
+
+        <div class="col-6 col-lg-3">
+          <div
+            style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffffff; padding: 1.25rem; border-radius: 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+            <div
+              style="width: 44px; height: 44px; background: #ecfeff; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="bi bi-arrow-repeat" style="color: #0891b2; font-size: 1.25rem;"></i>
+            </div>
+            <div style="line-height: 1.2;">
+              <h6 style="margin: 0; font-weight: 800; font-size: 0.9rem; color: #1e293b;">INTERSWITCH</h6>
+              <small
+                style="color: #64748b; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Switching
+                Power</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div
+            style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffffff; padding: 1.25rem; border-radius: 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+            <div
+              style="width: 44px; height: 44px; background: #fff1f2; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="bi bi-credit-card-2-front-fill" style="color: #e11d48; font-size: 1.25rem;"></i>
+            </div>
+            <div style="line-height: 1.2;">
+              <h6 style="margin: 0; font-weight: 800; font-size: 0.9rem; color: #1e293b;">MASTERCARD</h6>
+              <small
+                style="color: #64748b; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Secure
+                Issuing</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div
+            style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid #ffffff; padding: 1.25rem; border-radius: 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: all 0.3s ease;">
+            <div
+              style="width: 44px; height: 44px; background: #f0fdf4; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="bi bi-bank2" style="color: #16a34a; font-size: 1.25rem;"></i>
+            </div>
+            <div style="line-height: 1.2;">
+              <h6 style="margin: 0; font-weight: 800; font-size: 0.9rem; color: #1e293b;">NDIC</h6>
+              <small
+                style="color: #64748b; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Insured &
+                Safe</small>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
+  <!-- business partners ends here -->
 
-  <section id="features" class="py-5" style="background-color: #f8f9fa;">
-    <div class="container py-5">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <h2 class="fw-bold display-6">Why SendNaw?</h2>
-        <p class="text-muted">Built for the modern Nigerian economy.</p>
-      </div>
+  <!-- calculate loan section -->
+  <section id="calculate" style="padding: 100px 0; font-family: 'Inter', sans-serif;">
+    <div class="container">
+      <div class="row align-items-center">
 
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="feature-card p-4 h-100">
-            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
-              <i class="bi bi-robot fs-4"></i>
-            </div>
-            <h4>AI Powered</h4>
-            <p class="text-muted">Our credit algorithm analyzes your financial health in seconds, not days.</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="feature-card p-4 h-100">
-            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
-              <i class="bi bi-shield-check fs-4"></i>
-            </div>
-            <h4>Bank Grade Security</h4>
-            <p class="text-muted">Your BVN and data are encrypted with 256-bit SSL technology. NDPR Compliant.</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="feature-card p-4 h-100">
-            <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle mb-3 text-primary">
-              <i class="bi bi-graph-up-arrow fs-4"></i>
-            </div>
-            <h4>Grow Limit</h4>
-            <p class="text-muted">Repay on time and watch your loan limit increase up to ₦1,000,000.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-5 position-relative"
-    style="background-color: #f8fafc; color: #0f172a; font-family: 'Inter', -apple-system, sans-serif; overflow: hidden;">
-    <div class="container py-lg-5">
-
-      <div class="row align-items-center gy-5">
-
-        <div class="col-lg-6 text-center text-lg-start">
-          <span class="badge rounded-pill px-3 py-2 mb-3"
-            style="background: rgba(79, 70, 229, 0.1); color: #9d4edd; font-weight: 600; font-size: 0.85rem; border: none;">
-            Now available in Nigeria
-          </span>
-          <h2 class="display-4 fw-bold mb-3" style="letter-spacing: -0.02em; line-height: 1.2;">
-            Your loan, <br>
-            <span style="color: #9d4edd;">managed in one app.</span>
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <h2 style="font-weight: 800; color: #6f42c1; font-size: 2.8rem; line-height: 1.2; margin-bottom: 24px;">
+            Try out our loan <br>calculator.
           </h2>
-          <p class="lead mb-4" style="color: #475569; max-width: 500px; font-size: 1.15rem;">
-            Experience a simpler way to borrow. Apply in minutes, get instant approval, and manage repayments with
-            SendNaw.
+          <p style="color: #4b5563; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
+            Set a loan amount and your preferred repayment time to see the estimated amount you'll repay monthly if you
+            take a Sendnaw Loan.
           </p>
 
-          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-            <button class="btn d-flex align-items-center gap-2 px-4 py-2"
-              style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-              <i class="bi bi-apple fs-2" style="color: #0f172a;"></i>
-              <div class="text-start lh-1">
-                <small
-                  style="font-size: 10px; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em;">Download
-                  on</small><br>
-                <span style="font-weight: 700; color: #0f172a;">App Store</span>
-              </div>
-            </button>
-
-            <button class="btn d-flex align-items-center gap-2 px-4 py-2"
-              style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-              <i class="bi bi-google-play fs-2" style="color: #0f172a;"></i>
-              <div class="text-start lh-1">
-                <small style="font-size: 10px; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em;">Get
-                  it on</small><br>
-                <span style="font-weight: 700; color: #0f172a;">Google Play</span>
-              </div>
-            </button>
-          </div>
+          <a href="#calculatorCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="calculatorCollapse"
+            style="color: #6f42c1; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+            Calculate Loan <span style="margin-left: 8px;">&rsaquo;</span>
+          </a>
         </div>
 
-        <div class="col-lg-6 text-center">
-          <div class="position-relative d-inline-block">
-            <div class="position-absolute top-50 start-50 translate-middle w-75 h-75 rounded-circle"
-              style="background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, rgba(248,250,252,0) 70%); z-index: 0;">
-            </div>
+        <div class="col-lg-6 offset-lg-1 d-flex justify-content-center">
+          <div
+            style="position: relative; width: 450px; height: 450px; background-color: #f3f0ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: visible;">
 
-            <img src="/images/loan.png" alt="SendNaw App Interface" class="img-fluid position-relative"
-              style="max-width:380px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08)); z-index: 1;">
-          </div>
-        </div>
-      </div>
+            <div class="card border-0 shadow-sm"
+              style="width: 85%; border-radius: 24px; padding: 40px; background: #fff; z-index: 2; opacity: 0.9;">
+              <div class="text-center mb-4">
+                <div style="height: 20px; width: 60%; background: #f1f5f9; margin: 0 auto; border-radius: 10px;"></div>
+              </div>
 
-      <div class="row justify-content-center mt-5 pt-lg-5">
-        <div class="col-lg-8">
-          <div class="text-center mb-5">
-            <h3 style="font-weight: 800; color: #0f172a;">Questions? We have answers.</h3>
-            <p style="color: #64748b;">Everything you need to know about SendNaw loans.</p>
-          </div>
+              <div style="height: 40px; background: #f9fafb; border-radius: 12px; margin-bottom: 20px;"></div>
 
-          <div class="accordion" id="faqAccordion" style="--bs-accordion-border-color: transparent;">
-
-            <div class="accordion-item mb-3"
-              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1"
-                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
-                  How quickly can I get my loan?
-                </button>
-              </h2>
-              <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
-                  Once your application is approved—which typically takes under 5 minutes—the funds are available for
-                  instant withdrawal to your linked bank account.
+              <div
+                style="height: 10px; background: #e2e8f0; border-radius: 10px; margin-bottom: 30px; position: relative;">
+                <div
+                  style="position: absolute; left: 30%; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background: #6f42c1; border-radius: 50%;">
                 </div>
               </div>
-            </div>
 
-            <div class="accordion-item mb-3"
-              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2"
-                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
-                  What is the interest rate?
-                </button>
-              </h2>
-              <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
-                  Our rates are calculated based on your credit profile. You will always see the total repayment amount
-                  and interest rate clearly before you commit.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item mb-3"
-              style="border: none; border-radius: 12px; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.04); overflow: hidden;">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3"
-                  style="background: #ffffff; color: #1e293b; font-weight: 600; padding: 1.25rem; border: none; box-shadow: none;">
-                  Is my personal data secure?
-                </button>
-              </h2>
-              <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body" style="color: #64748b; padding-top: 0; line-height: 1.6;">
-                  We use bank-level 256-bit encryption to protect your data. We never share your personal information
-                  with third parties without your explicit consent.
-                </div>
-              </div>
+              <div style="height: 40px; background: #f9fafb; border-radius: 12px;"></div>
             </div>
 
           </div>
         </div>
+
       </div>
     </div>
   </section>
+  <!-- calculate section ends here -->
+
+  <!-- calculator div -->
+  <div class="collapse" id="calculatorCollapse">
+    <section id="calculator" class="py-5" style="position: relative; overflow: hidden; background-color: #fafbff;">
+      <div
+        style="position: absolute; top: -10%; right: -5%; width: 400px; height: 400px; background: rgba(111, 66, 193, 0.05); border-radius: 50%; filter: blur(80px); pointer-events: none;">
+      </div>
+
+      <div class="container py-lg-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <div
+              style="display: inline-block; padding: 6px 16px; background: rgba(111, 66, 193, 0.1); color: #6f42c1; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase;">
+              <i class="bi bi-calculator me-2"></i>Flexible Loans
+            </div>
+            <h2 class="fw-bold mb-4" style="font-size: 2.8rem; color: #1e293b; line-height: 1.2;">
+              Transparent Rates. <br><span style="color: #6f42c1;">No Hidden Fees.</span>
+            </h2>
+            <p class="mb-4" style="color: #64748b; font-size: 1.1rem;">
+              Use our calculator to see exactly what you repay. We charge a flat interest rate—no surprises, ever.
+            </p>
+
+            <ul class="list-unstyled mb-5">
+              <li class="mb-3 d-flex align-items-center" style="font-weight: 500; color: #334155;">
+                <div
+                  style="width: 24px; height: 24px; background: #6f42c1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                  <span style="color: white; font-size: 0.8rem;">✓</span>
+                </div>
+                Early repayment discount
+              </li>
+              <li class="mb-3 d-flex align-items-center" style="font-weight: 500; color: #334155;">
+                <div
+                  style="width: 24px; height: 24px; background: #6f42c1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                  <span style="color: white; font-size: 0.8rem;">✓</span>
+                </div>
+                Instant disbursement
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-7">
+            <div
+              style="background: #ffffff; border: 1px solid rgba(111, 66, 193, 0.1); border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(111, 66, 193, 0.15); overflow: hidden;">
+              <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center">
+                  <div class="col-md-7 mb-4 mb-md-0">
+                    <div class="d-flex justify-content-between align-items-end mb-3">
+                      <label class="fw-bold" style="color: #1e293b;">Loan Amount</label>
+                      <span style="font-size: 1.5rem; font-weight: 800; color: #6f42c1;" id="amountVal">₦50,000</span>
+                    </div>
+
+                    <input type="range" class="form-range" id="loanRange" min="10000" max="500000" step="5000"
+                      value="50000"
+                      style="accent-color: #6f42c1; height: 8px; border-radius: 10px; margin-bottom: 2rem;">
+
+                    <label class="fw-bold mb-3 d-block" style="color: #1e293b;">Select Duration</label>
+                    <div class="d-flex gap-3 mb-4">
+                      <button class="btn active"
+                        style="flex: 1; background: #6f42c1; color: #fff; border-radius: 15px; font-weight: 700; padding: 12px;">15
+                        Days</button>
+                      <button class="btn"
+                        style="flex: 1; border: 2px solid #e2e8f0; color: #64748b; border-radius: 15px; font-weight: 700; padding: 12px;">30
+                        Days</button>
+                    </div>
+
+                    <div
+                      style="background: #fdfbff; border-radius: 15px; padding: 1.5rem; border: 1px dashed rgba(111, 66, 193, 0.3);">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span style="color: #64748b; font-size: 0.9rem;">Interest Rate</span>
+                        <span style="font-weight: 700; color: #1e293b;">12%</span>
+                      </div>
+                      <div class="d-flex justify-content-between pt-2" style="border-top: 1px solid rgba(0,0,0,0.05);">
+                        <span style="color: #64748b; font-size: 0.9rem;">Total Repayment</span>
+                        <span style="font-weight: 800; color: #6f42c1;">₦56,000</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5 d-flex flex-column align-items-center justify-content-center"
+                    style="border-left: 1px solid #f1f5f9;">
+                    <div
+                      style="position: relative; width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(#6f42c1 85%, #e2e8f0 0); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                      <div
+                        style="width: 110px; height: 110px; background: #ffffff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <small style="font-size: 0.6rem; color: #94a3b8; font-weight: 700;">TOTAL</small>
+                        <span style="font-size: 1.1rem; font-weight: 800; color: #1e293b;">₦56k</span>
+                      </div>
+                    </div>
+                    <button class="btn btn-lg w-100 rounded-pill"
+                      style="background: #6f42c1; color: white; font-weight: 700; padding: 12px;">Apply Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- calculator ends here -->
 
 
+  <!-- borrow section -->
+  <section style="padding: 100px 0; font-family: 'Inter', -apple-system, sans-serif;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-lg-6 mb-5 mb-lg-0 d-flex justify-content-center">
+          <div
+            style="position: relative; width: 450px; height: 450px; background-color: #e6f9f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: visible;">
+
+            <div class="card border-0 shadow-lg"
+              style="width: 85%; border-radius: 24px; padding: 30px; background: #fff; z-index: 2;">
+
+              <div class="d-flex justify-content-between mb-4">
+                <div
+                  style="width: 35px; height: 35px; background: #4ade80; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">
+                  ✓</div>
+                <div
+                  style="width: 35px; height: 35px; background: #4ade80; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">
+                  ✓</div>
+                <div
+                  style="width: 35px; height: 35px; background: #4ade80; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">
+                  ✓</div>
+              </div>
+
+              <div class="d-flex justify-content-between mb-4">
+                <div
+                  style="height: 25px; width: 28%; background: #c1f2e0; border: 2px solid #ffffff; outline: 1px solid #c1f2e0; border-radius: 20px;">
+                </div>
+                <div
+                  style="height: 25px; width: 28%; background: #c1f2e0; border: 2px solid #ffffff; outline: 1px solid #c1f2e0; border-radius: 20px;">
+                </div>
+                <div
+                  style="height: 25px; width: 28%; background: #c1f2e0; border: 2px solid #ffffff; outline: 1px solid #c1f2e0; border-radius: 20px;">
+                </div>
+              </div>
+
+              <div class="mt-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <small style="color: #6c757d; font-weight: 500;">Principal</small>
+                  <div style="height: 12px; width: 60px; background: #7dd3fc; border-radius: 20px;"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <small style="color: #6c757d; font-weight: 500;">Interest</small>
+                  <div style="height: 12px; width: 40px; background: #d1d5db; border-radius: 20px;"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <small style="color: #6c757d; font-weight: 500;">Monthly Interest Rate</small>
+                  <div style="height: 12px; width: 25px; background: #d1d5db; border-radius: 20px;"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <small style="color: #6c757d; font-weight: 500;">Number of Repayments</small>
+                  <div style="height: 12px; width: 25px; background: #d1d5db; border-radius: 20px;"></div>
+                </div>
+
+                <hr style="border-top: 1px solid #eee; margin: 15px 0;">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span style="font-weight: 700; color: #1f2937;">Total Due</span>
+                  <div style="height: 12px; width: 35px; background: #9ca3af; border-radius: 20px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1">
+          <h2 style="font-weight: 800; color: #6f42c1; font-size: 2.8rem; line-height: 1.2; margin-bottom: 24px;">
+            Borrow without <br> paperwork or <br> stories.
+          </h2>
+          <p style="color: #4b5563; font-size: 1.1rem; line-height: 1.6; max-width: 400px;">
+            Anyone can have an urgent money need. Get the amount you need quickly on the <strong>Sendnaw</strong> app.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- borrow section ends here -->
+
+  <!-- account statement section -->
+  <section style="padding: 100px 0; font-family: 'Inter', sans-serif;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <h2 style="font-weight: 800; color: #6f42c1; font-size: 2.8rem; line-height: 1.2; margin-bottom: 24px;">
+            Boost loan offers with <br>an account statement.
+          </h2>
+          <p style="color: #4b5563; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+            Want a better loan offer? Add your account statement to increase your chances of getting the amount you
+            want.
+          </p>
+          <a href="/signup.html" style="color: #6f42c1; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+            Join Sendnaw <span style="margin-left: 8px;">&rsaquo;</span>
+          </a>
+        </div>
+
+        <div class="col-lg-6 offset-lg-1 d-flex justify-content-center">
+          <div
+            style="position: relative; width: 450px; height: 450px; background-color: #f3f0ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: visible;">
+
+            <div class="card border-0 shadow-lg"
+              style="width: 85%; border-radius: 24px; padding: 40px; background: #fff; z-index: 2;">
+              <div style="margin-bottom: 20px;">
+                <label
+                  style="font-size: 0.9rem; color: #1f2937; margin-bottom: 8px; display: block; font-weight: 500;">Bank</label>
+                <div
+                  style="background: #f9fafb; padding: 15px; border-radius: 12px; color: #9ca3af; display: flex; justify-content: space-between; align-items: center;">
+                  Choose Bank <span style="font-size: 12px;"><i class="bi bi-caret-down-fill"></i></span>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  style="font-size: 0.9rem; color: #1f2937; margin-bottom: 8px; display: block; font-weight: 500;">Account
+                  Number</label>
+                <div style="background: #f9fafb; padding: 15px; border-radius: 12px; color: #d1d5db;">
+                  Account Number
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="position: absolute; top: 15%; right: 5%; z-index: 3; background: #fff; padding: 12px; border-radius: 50%; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+              <div
+                style="width: 40px; height: 40px; background: #f3f4f6; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px; overflow: hidden;">
+                <div style="width: 14px; height: 14px; background: #9ca3af; border-radius: 50%; margin-bottom: 2px;">
+                </div>
+                <div style="width: 24px; height: 20px; background: #4ade80; border-radius: 10px 10px 0 0;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- account statement section ends here -->
+
+  <!-- loan offers section -->
+  <section style="padding: 100px 0; font-family: 'Inter', sans-serif;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-lg-6 mb-5 mb-lg-0 d-flex justify-content-center">
+          <div
+            style="position: relative; width: 450px; height: 450px; background-color: #fff1f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: visible;">
+
+            <div class="card border-0 shadow-lg text-center"
+              style="width: 85%; border-radius: 24px; padding: 40px; background: #fff; z-index: 2;">
+
+              <div
+                style="width: 60px; height: 60px; background: #00d1ff; border-radius: 15px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 24px;">
+                <i class="bi bi-activity"></i>
+              </div>
+
+              <h6 style="font-weight: 700; color: #1f2937; font-size: 1.1rem;">Available Loan Offers</h6>
+
+              <div class="d-flex justify-content-center gap-2 my-4">
+                <span
+                  style="font-size: 0.8rem; padding: 6px 16px; background: #f3f0ff; color: #6f42c1; border-radius: 20px; font-weight: 600;">1
+                  month</span>
+                <span style="font-size: 0.8rem; padding: 6px 16px; color: #9ca3af; border-radius: 20px;">2 months</span>
+                <span style="font-size: 0.8rem; padding: 6px 16px; color: #9ca3af; border-radius: 20px;">3 months</span>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-6">
+                  <div style="height: 45px; border: 2px solid #7dd3fc; background: #e0f7ff; border-radius: 25px;"></div>
+                </div>
+                <div class="col-6">
+                  <div style="height: 45px; border: 1px solid #f3f4f6; border-radius: 25px;"></div>
+                </div>
+                <div class="col-6">
+                  <div style="height: 45px; border: 1px solid #f3f4f6; border-radius: 25px;"></div>
+                </div>
+                <div class="col-6">
+                  <div style="height: 45px; border: 1px solid #f3f4f6; border-radius: 25px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 offset-lg-1">
+          <h2 style="font-weight: 800; color: #6f42c1; font-size: 2.8rem; line-height: 1.2; margin-bottom: 24px;">
+            Repay your Sendnaw loan <br>comfortably.
+          </h2>
+          <p style="color: #4b5563; font-size: 1.1rem; line-height: 1.6;">
+            Choose a monthly repayment option that's convenient for you on the app.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- loan offers section ends here  -->
+
+  <!-- loan summary section -->
+  <section style="padding: 100px 0; font-family: 'Inter', sans-serif;">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <div class="col-lg-5 mb-5 mb-lg-0">
+          <h2 style="font-weight: 800; color: #6f42c1; font-size: 2.8rem; line-height: 1.2; margin-bottom: 24px;">
+            Get up to ₦150,000 in <br>minutes.
+          </h2>
+          <p style="color: #4b5563; font-size: 1.1rem; line-height: 1.6;">
+            We'll let you choose how much you'd like to borrow after our quick loan approval process.
+          </p>
+        </div>
+
+        <div class="col-lg-6 offset-lg-1 d-flex justify-content-center">
+          <div
+            style="position: relative; width: 450px; height: 450px; background-color: #fffbeb; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: visible;">
+
+            <div class="card border-0 shadow-lg"
+              style="width: 85%; border-radius: 24px; padding: 40px; background: #fff; z-index: 2;">
+              <h6 style="font-weight: 700; color: #1f2937; margin-bottom: 25px; font-size: 1.1rem;">Loan Summary</h6>
+
+              <div class="d-flex justify-content-between mb-3">
+                <small style="color: #9ca3af; font-weight: 500;">Loan Amount</small>
+                <div style="height: 14px; width: 90px; background: #7dd3fc; border-radius: 20px;"></div>
+              </div>
+
+              <div class="d-flex justify-content-between mb-3">
+                <small style="color: #9ca3af; font-weight: 500;">Interest</small>
+                <div style="height: 14px; width: 60px; background: #d1d5db; border-radius: 20px;"></div>
+              </div>
+
+              <div class="d-flex justify-content-between mb-3 pt-3" style="border-top: 1px solid #f3f4f6;">
+                <small style="color: #4b5563; font-weight: 700;">Total Amount Due</small>
+                <div style="height: 14px; width: 100px; background: #9ca3af; border-radius: 20px;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- loan summary ends here -->
+
+  <!-- faq section -->
+  <section style="padding: 100px 0; font-family: 'Inter', -apple-system, sans-serif;">
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <div class="col-lg-8 text-center mb-5">
+          <div
+            style="display: inline-block; padding: 6px 16px; background: rgba(111, 66, 193, 0.1); color: #6f42c1; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase;">
+            Support
+          </div>
+          <h2 style="font-weight: 800; color: #40196d; font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;">
+            Frequently Asked Questions
+          </h2>
+          <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            Everything you need to know about Sendnaw loans, interest rates, and account security.
+          </p>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="accordion accordion-flush" id="faqAccordion">
+
+            <div
+              style="background: #fff; border-radius: 20px; margin-bottom: 15px; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq1"
+                  style="padding: 25px; font-weight: 700; color: #1e293b; background: transparent; box-shadow: none;">
+                  How long does the loan approval take?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="padding: 0 25px 25px; color: #64748b; line-height: 1.6;">
+                  Our automated system processes applications instantly. Most Sendnaw users receive a decision within 3
+                  minutes and disbursement follows immediately after approval.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="background: #fff; border-radius: 20px; margin-bottom: 15px; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq2"
+                  style="padding: 25px; font-weight: 700; color: #1e293b; background: transparent; box-shadow: none;">
+                  Do I need collateral to get a loan?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="padding: 0 25px 25px; color: #64748b; line-height: 1.6;">
+                  No, Sendnaw provides unsecured loans. You don't need collateral or guarantors. We use your digital
+                  footprint and account statement to determine your creditworthiness.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="background: #fff; border-radius: 20px; margin-bottom: 15px; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq3"
+                  style="padding: 25px; font-weight: 700; color: #1e293b; background: transparent; box-shadow: none;">
+                  How do I increase my loan limit?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="padding: 0 25px 25px; color: #64748b; line-height: 1.6;">
+                  The best way to increase your limit is to repay your current loans on time. Additionally, uploading a
+                  recent account statement helps us offer you higher amounts.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="background: #fff; border-radius: 20px; margin-bottom: 15px; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq4"
+                  style="padding: 25px; font-weight: 700; color: #1e293b; background: transparent; box-shadow: none;">
+                  Is my data safe with Sendnaw?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" style="padding: 0 25px 25px; color: #64748b; line-height: 1.6;">
+                  Yes. We use bank-grade 256-bit encryption to protect your data. We never share your personal
+                  information with third parties without your explicit consent.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-8 text-center mt-5">
+          <p style="color: #64748b;">Still have questions?
+            <a href="/contact.html.html" style="color: #6f42c1; text-decoration: none; font-weight: 700;">Chat with
+              support</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
 
@@ -872,6 +1271,14 @@
 
     // Initial Call
     calculateLoan();
+
+    // Scroll to calculator on collapse show
+    const calculatorCollapse = document.getElementById('calculatorCollapse');
+    calculatorCollapse.addEventListener('shown.bs.collapse', function () {
+      // Scrolls the user down to the calculator smoothly once the toggle animation finishes
+      this.scrollIntoView({ behavior: 'smooth' });
+    });
+
   </script>
 
   <script src="./script.js"></script>

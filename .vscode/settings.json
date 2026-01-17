@@ -1,5 +1,15 @@
 {
   "html.validate.scripts": true,
   "html.validate.styles": true,
-  "cSpell.words": ["Bento", "Glassmorphism", "Nawtag", "NDIC", "sendnaw"]
+  "cSpell.words": [
+    "Bento",
+    "CASHBACKS",
+    "Glassmorphism",
+    "INTERSWITCH",
+    "Nawtag",
+    "NDIC",
+    "PAYSTACK",
+    "sendnaw",
+    "Sendnawpay"
+  ]
 }
