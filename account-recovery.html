@@ -169,42 +169,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script type="module">
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const resetBtn = document.querySelector("#resetBtn");
-            const inputs = document.querySelectorAll("input");
-            const toastEl = document.querySelector("#resetToast");
-            const toast = new bootstrap.Toast(toastEl);
-
-            // Enable the button only if inputs have value
-            const validateInputs = () => {
-                const isValid = [...inputs].every(input => input.value.trim() !== "");
-                resetBtn.disabled = !isValid;
-            };
-
-            inputs.forEach(input => input.addEventListener("input", validateInputs));
-
-            resetBtn.addEventListener("click", () => {
-                // Show loading state
-                resetBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>Sending Reset...`;
-                resetBtn.disabled = true;
-
-                // Simulate server delay
-                setTimeout(() => {
-                    resetBtn.innerHTML = `Reset Password`;
-                    resetBtn.disabled = false;
-
-                    // Show toast popup
-                    toast.show();
-                }, 2000);
-            });
-
-        });
-    </script>
-
-
 </body>
 
 </html>

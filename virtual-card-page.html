@@ -1300,35 +1300,7 @@
     <script>
         AOS.init({
             delay: 900
-        });
-
-        document.getElementById('confirmBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const btn = e.currentTarget;
-            const btnText = document.getElementById('btnText');
-            const toastEl = document.getElementById('successToast');
-            const toast = new bootstrap.Toast(toastEl, { delay: 4000 }); // Visible for 4 seconds
-
-            // 1. Show Processing State
-            btn.disabled = true;
-            btnText.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> PROCESSING...`;
-
-            // 2. Simulate Delay (1.5 seconds)
-            setTimeout(() => {
-                // 3. Reset Button State
-                btn.disabled = false;
-                btnText.innerHTML = "CONFIRM REQUEST";
-
-                // 4. Trigger Mobile-Optimized Popup
-                toast.show();
-
-                // Optional: Vibration for mobile support
-                if (navigator.vibrate) {
-                    navigator.vibrate(200);
-                }
-            }, 1500);
-        });
+        })
 
     </script>
 
